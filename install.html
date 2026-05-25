@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-title" content="BGM Party Hire">
     <meta name="theme-color" content="#e6392e">
     <!-- Manifest: start_url points to index.html in the SAME folder -->
-    <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22BGM%20Party%20Hire%22%2C%22short_name%22%3A%22BGM%22%2C%22start_url%22%3A%22index.html%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23b71c1c%22%2C%22theme_color%22%3A%22%23e6392e%22%7D">
+    <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22BGM%20Party%20Hire%22%2C%22short_name%22%3A%22BGM%22%2C%22start_url%22%3A%22Index.html%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23b71c1c%22%2C%22theme_color%22%3A%22%23e6392e%22%7D">
     <link rel="apple-touch-icon" href="Snapchat-1423612140.jpg">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -213,7 +213,7 @@
             <div class="logo-font text-2xl tracking-tight">
                 <span class="text-yellow-400">BGM</span> PARTY HIRE
             </div>
-            <a href="index.html"
+            <a href="Index.html"
                class="bg-yellow-400 text-red-700 px-5 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 hover:scale-105 transition shadow-lg">
                 <i class="fa-solid fa-house"></i>
                 MAIN SITE
@@ -261,6 +261,163 @@
                         <div>
                             <div class="font-bold mb-1">Open in Safari</div>
                             <div class="text-sm text-yellow-100 opacity-90">Make sure you're viewing this page in <span class="text-yellow-400 font-semibold">Safari</span> on your iPhone or iPad — not Chrome or another browser.</div>
+                        </div>
+                    </div>
+
+                    <div class="step" style="animation-delay:0.4s">
+                        <div class="step-num">2</div>
+                        <div>
+                            <div class="font-bold mb-1 flex items-center gap-2">
+                                Tap the Share button
+                                <span class="share-bounce text-yellow-400 text-xl">
+                                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                                </span>
+                            </div>
+                            <div class="text-sm text-yellow-100 opacity-90">At the <span class="text-yellow-400 font-semibold">bottom centre</span> of Safari — a box with an arrow pointing up. Tap it!</div>
+                        </div>
+                    </div>
+
+                    <div class="step" style="animation-delay:0.5s">
+                        <div class="step-num">3</div>
+                        <div>
+                            <div class="font-bold mb-1">Tap "Add to Home Screen"</div>
+                            <div class="text-sm text-yellow-100 opacity-90">Scroll the share sheet and tap <span class="text-yellow-400 font-semibold">"Add to Home Screen"</span> 🏠 — usually in the second row of icons.</div>
+                        </div>
+                    </div>
+
+                    <div class="step" style="animation-delay:0.6s">
+                        <div class="step-num">4</div>
+                        <div>
+                            <div class="font-bold mb-1">Tap "Add" to confirm</div>
+                            <div class="text-sm text-yellow-100 opacity-90">A preview appears — hit <span class="text-yellow-400 font-semibold">"Add"</span> in the top right. Done! The app icon appears on your home screen 🎊</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Visual hint -->
+                <div class="mt-6 text-center">
+                    <div class="text-yellow-300 text-sm font-semibold mb-2">Look for this button at the bottom of Safari:</div>
+                    <div class="inline-flex items-center gap-3 bg-yellow-400/15 border border-yellow-400/35 rounded-2xl px-6 py-3">
+                        <span class="arrow-bounce text-2xl text-yellow-400">
+                            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                        </span>
+                        <span class="text-yellow-100 font-semibold text-sm">Share → Add to Home Screen</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- DESKTOP: QR code -->
+        <div class="desktop-only w-full pop-in" style="animation-delay:0.2s">
+            <div class="glass-card p-8 text-center">
+                <h2 class="logo-font text-3xl mb-2 text-yellow-400">SCAN WITH YOUR PHONE</h2>
+                <p class="text-yellow-100 mb-8 text-sm">Point your iPhone camera at the QR code, then follow the Safari steps to install</p>
+
+                <div class="qr-frame mx-auto mb-6">
+                    <!-- ⬇ Replace YOUR-SITE-URL.com/install.html with your real URL -->
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://YOUR-SITE-URL.com/install.html&color=b71c1c&bgcolor=ffffff&qzone=1&format=svg"
+                         alt="QR Code — BGM Party Hire App Install"
+                         width="220" height="220"
+                         onerror="this.outerHTML='<div style=\'width:220px;height:220px;display:flex;align-items:center;justify-content:center;background:#f5f5f5;border-radius:8px;color:#b71c1c;font-size:0.8rem;text-align:center;padding:16px\'>⚠️ Update<br>YOUR-SITE-URL<br>in the QR src</div>'">
+                </div>
+
+                <div class="text-yellow-300 text-sm font-semibold">🔗 Or open this page directly on your phone in Safari</div>
+            </div>
+        </div>
+
+        <!-- Why install -->
+        <div class="glass-card p-7 w-full pop-in" style="animation-delay:0.75s">
+            <h3 class="logo-font text-2xl text-yellow-400 mb-4 text-center">WHY INSTALL?</h3>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="flex items-center gap-3 bg-white/5 rounded-2xl px-4 py-3">
+                    <span class="text-2xl">⚡</span>
+                    <div>
+                        <div class="font-bold text-sm">Instant Access</div>
+                        <div class="text-xs text-yellow-100 opacity-75">One tap to book</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 bg-white/5 rounded-2xl px-4 py-3">
+                    <span class="text-2xl">📴</span>
+                    <div>
+                        <div class="font-bold text-sm">Works Offline</div>
+                        <div class="text-xs text-yellow-100 opacity-75">Browse without signal</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 bg-white/5 rounded-2xl px-4 py-3">
+                    <span class="text-2xl">🚫</span>
+                    <div>
+                        <div class="font-bold text-sm">No App Store</div>
+                        <div class="text-xs text-yellow-100 opacity-75">100% free, always</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 bg-white/5 rounded-2xl px-4 py-3">
+                    <span class="text-2xl">🎉</span>
+                    <div>
+                        <div class="font-bold text-sm">Book Faster</div>
+                        <div class="text-xs text-yellow-100 opacity-75">Secure your date quick</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center pop-in" style="animation-delay:0.95s">
+            <a href="Index.html"
+               class="btn-yellow inline-flex items-center gap-3 px-10 py-5 rounded-3xl text-xl font-bold shadow-2xl">
+                <i class="fa-solid fa-rocket"></i>
+                BROWSE THE SITE FIRST
+            </a>
+            <p class="mt-4 text-yellow-200 text-sm opacity-75">Then install the app from Safari!</p>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 text-center py-8 border-t border-yellow-400/20 mt-4">
+        <p class="text-xs text-yellow-200 opacity-50">© 2026 BGM Party Hire • Inflatable fun across the UK</p>
+    </footer>
+
+    <script>
+        // ─── PWA REDIRECT ────────────────────────────────────────────────────────
+        // If already installed and launched from home screen, skip this install
+        // page and go straight to the main site.
+        (function () {
+            var standalone =
+                window.navigator.standalone === true ||
+                window.matchMedia('(display-mode: standalone)').matches ||
+                window.matchMedia('(display-mode: fullscreen)').matches;
+            if (standalone) {
+                window.location.replace('Index.html');
+            }
+        })();
+
+        // ─── NOT-SAFARI BANNER ───────────────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', function () {
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+            if (isMobile && !isSafari) {
+                var banner = document.getElementById('not-safari-banner');
+                banner.innerHTML =
+                    '<div style="' +
+                        'background:rgba(255,215,0,0.14);' +
+                        'border:1px solid rgba(255,215,0,0.5);' +
+                        'border-radius:16px;padding:14px 18px;margin-bottom:16px;' +
+                        'font-size:0.85rem;display:flex;align-items:center;gap:12px' +
+                    '">' +
+                        '<span style="font-size:1.5rem">⚠️</span>' +
+                        '<div>' +
+                            '<div style="font-weight:700;color:#ffd700;margin-bottom:3px">Open in Safari first!</div>' +
+                            '<div style="color:rgba(255,255,255,0.85)">Copy this URL and paste it into <strong>Safari</strong> to install the app.</div>' +
+                        '</div>' +
+                    '</div>';
+            }
+        });
+    </script>
+</body>
+</html>iPad — not Chrome or another browser.</div>
                         </div>
                     </div>
 
