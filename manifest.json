@@ -1,24 +1,16 @@
+
 {
   "name": "BGM Party Hire",
-  "short_name": "BGM Party",
-  "description": "Book bouncy castles, bubble house & catering for birthdays",
-  "start_url": ".",
+  "short_name": "BGMParty",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#1a0033",
-  "theme_color": "#8b00ff",
-  "orientation": "portrait-primary",
+  "background_color": "#b61c1c",
+  "theme_color": "#b61c1c",
   "icons": [
     {
-      "src": "https://via.placeholder.com/192x192/8b00ff/ffffff?text=BGM",
+      "src": "Snapchat-1423612140.jpg",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "https://via.placeholder.com/512x512/8b00ff/ffffff?text=BGM",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/jpeg"
     }
   ]
 }
