@@ -72,6 +72,16 @@
             transform: scale(1.1) rotate(2deg);
             color: #b71c1c;
         }
+
+        /* Modal Styles */
+        .modal {
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes modalPop {
+            0% { transform: scale(0.7); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -93,7 +103,7 @@
                 <a href="#" class="hover:text-yellow-400 transition">Contact</a>
             </div>
 
-            <button onclick="bookNow()" 
+            <button onclick="showBookingModal()" 
                     class="bg-yellow-400 text-red-700 px-6 py-3 rounded-2xl font-bold text-sm flex items-center gap-2 hover:scale-105 transition">
                 <i class="fa-solid fa-calendar"></i>
                 BOOK NOW
@@ -118,7 +128,7 @@
         </p>
 
         <div class="flex flex-col sm:flex-row gap-5 w-full max-w-md mx-auto">
-            <button onclick="bookNow()" 
+            <button onclick="showBookingModal()" 
                     class="btn-yellow px-10 py-6 rounded-3xl text-xl font-bold flex items-center justify-center gap-3 shadow-2xl">
                 <i class="fa-solid fa-party-horn"></i>
                 BOOK YOUR PARTY
@@ -165,7 +175,7 @@
     <!-- Services -->
     <div class="max-w-7xl mx-auto px-5 py-20">
         <h2 class="text-center text-5xl font-bold mb-4">Our Epic Inflatables</h2>
-        <p class="text-center text-yellow-100 mb-12 max-w-md mx-auto">From bouncy castles to massive obstacle courses — we've got the perfect one for your party</p>
+        <p class="text-center text-yellow-100 mb-12 max-w-md mx-auto">From bouncy castles to massive slides and fun games — we've got everything for your party</p>
         
         <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-white/10 backdrop-blur-2xl rounded-3xl overflow-hidden card">
@@ -173,7 +183,7 @@
                 <div class="p-8">
                     <h3 class="text-2xl font-bold mb-2">Bouncy Castles</h3>
                     <p class="opacity-90">From princess themes to superhero adventures</p>
-                    <button onclick="bookNow()" class="mt-6 w-full bg-yellow-400 text-red-700 py-4 rounded-2xl font-bold">Hire Now →</button>
+                    <button onclick="showBookingModal()" class="mt-6 w-full bg-yellow-400 text-red-700 py-4 rounded-2xl font-bold">Hire Now →</button>
                 </div>
             </div>
             
@@ -182,16 +192,16 @@
                 <div class="p-8">
                     <h3 class="text-2xl font-bold mb-2">Slides &amp; Combos</h3>
                     <p class="opacity-90">Huge water slides and multi-play units</p>
-                    <button onclick="bookNow()" class="mt-6 w-full bg-yellow-400 text-red-700 py-4 rounded-2xl font-bold">Hire Now →</button>
+                    <button onclick="showBookingModal()" class="mt-6 w-full bg-yellow-400 text-red-700 py-4 rounded-2xl font-bold">Hire Now →</button>
                 </div>
             </div>
             
             <div class="bg-white/10 backdrop-blur-2xl rounded-3xl overflow-hidden card">
-                <div class="h-64 bg-gradient-to-br from-green-500 to-teal-400 flex items-center justify-center text-8xl">🏃‍♂️</div>
+                <div class="h-64 bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-8xl">🎮</div>
                 <div class="p-8">
-                    <h3 class="text-2xl font-bold mb-2">Obstacle Courses</h3>
-                    <p class="opacity-90">Perfect for older kids &amp; group fun</p>
-                    <button onclick="bookNow()" class="mt-6 w-full bg-yellow-400 text-red-700 py-4 rounded-2xl font-bold">Hire Now →</button>
+                    <h3 class="text-2xl font-bold mb-2">Party Games</h3>
+                    <p class="opacity-90">Inflatable games, sports arenas &amp; interactive fun</p>
+                    <button onclick="showBookingModal()" class="mt-6 w-full bg-yellow-400 text-red-700 py-4 rounded-2xl font-bold">Hire Now →</button>
                 </div>
             </div>
         </div>
@@ -201,7 +211,7 @@
     <div class="bg-black/60 py-20 text-center">
         <div class="max-w-xl mx-auto px-5">
             <h2 class="text-5xl font-bold mb-6">Ready to throw the best party ever?</h2>
-            <button onclick="bookNow()" 
+            <button onclick="showBookingModal()" 
                     class="btn-yellow px-16 py-7 rounded-3xl text-2xl font-bold inline-flex items-center gap-4">
                 <i class="fa-solid fa-rocket"></i>
                 BOOK YOUR DATE NOW
@@ -220,15 +230,118 @@
         </div>
     </footer>
 
+    <!-- BOOKING MODAL -->
+    <div id="bookingModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100] p-4">
+        <div class="modal bg-white text-red-900 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-red-600 to-red-700 px-8 py-6 text-white flex items-center justify-between">
+                <div>
+                    <h2 class="text-3xl font-bold logo-font tracking-tight">BOOK YOUR PARTY</h2>
+                    <p class="text-yellow-300 text-sm mt-1">Let's make it unforgettable!</p>
+                </div>
+                <button onclick="closeModal()" class="text-4xl leading-none hover:text-yellow-300 transition">×</button>
+            </div>
+
+            <!-- Form -->
+            <div class="p-8 space-y-6">
+                <div>
+                    <label class="block text-sm font-semibold mb-2 text-red-800">Child's Name</label>
+                    <input id="childName" type="text" 
+                           class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none text-lg"
+                           placeholder="e.g. Tommy">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-red-800">Parent's Name</label>
+                        <input id="parentName" type="text" 
+                               class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none"
+                               placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-red-800">Phone Number</label>
+                        <input id="phone" type="tel" 
+                               class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none"
+                               placeholder="07xxx xxxxxx">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold mb-2 text-red-800">Email Address</label>
+                    <input id="email" type="email" 
+                           class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none"
+                           placeholder="parent@email.com">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold mb-2 text-red-800">Preferred Party Date</label>
+                    <input id="partyDate" type="date" 
+                           class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none text-lg">
+                </div>
+
+                <div class="pt-4">
+                    <button onclick="submitBooking()" 
+                            class="w-full btn-yellow py-5 rounded-3xl text-xl font-bold flex items-center justify-center gap-3 shadow-xl">
+                        <i class="fa-solid fa-party-horn"></i>
+                        CONFIRM BOOKING REQUEST
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-center py-6 text-xs text-red-500">
+                We'll get back to you within 24 hours to confirm availability
+            </div>
+        </div>
+    </div>
+
     <script>
-        function bookNow() {
-            alert("🎉 Redirecting to booking calendar...");
-            // In real app: open booking modal or navigate to booking page
+        function showBookingModal() {
+            document.getElementById('bookingModal').classList.remove('hidden');
+            document.getElementById('bookingModal').classList.add('flex');
+            
+            // Optional: pre-fill today's date + 7 days
+            const dateInput = document.getElementById('partyDate');
+            const today = new Date();
+            today.setDate(today.getDate() + 7);
+            dateInput.value = today.toISOString().split('T')[0];
         }
-        
+
+        function closeModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function submitBooking() {
+            const childName = document.getElementById('childName').value;
+            const parentName = document.getElementById('parentName').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const date = document.getElementById('partyDate').value;
+
+            if (!childName || !parentName || !phone || !email || !date) {
+                alert("Please fill in all fields ✨");
+                return;
+            }
+
+            alert(`🎉 Thank you, ${parentName}!\n\nBooking request for ${childName}'s party on ${date} has been received.\n\nWe'll contact you shortly on ${phone}.`);
+            closeModal();
+            
+            // Clear form
+            document.getElementById('childName').value = '';
+            document.getElementById('parentName').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('email').value = '';
+        }
+
         function viewPackages() {
             alert("📋 Showing our full range of party packages...");
         }
+
+        // Close modal when clicking outside
+        document.getElementById('bookingModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
     </script>
 </body>
 </html>
