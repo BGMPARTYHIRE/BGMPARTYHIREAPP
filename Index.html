@@ -1,250 +1,266 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BGM Party Hire</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    
+<body class="bg-gradient-to-br from-red-600 to-red-900 text-white min-h-screen">
+    <!-- APP WRAPPER -->
+    <div class="max-w-md mx-auto bg-red-900/40 shadow-xl min-h-screen flex flex-col rounded-none sm:rounded-3xl overflow-hidden">
+
+        <!-- TOP STATUS / APP BAR -->
+        <header class="bg-red-900/80 backdrop-blur flex items-center justify-between px-4 py-3 sticky top-0 z-20">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-yellow-400 flex items-center justify-center shadow-md">
+                    <i class="fa-solid fa-party-horn text-red-700 text-xl"></i>
+                </div>
+                <div>
+                    <div class="logo-font text-2xl leading-none tracking-tight">
+                        BGM<span class="text-yellow-400">PARTY</span>
+                    </div>
+                    <p class="text-xs text-red-100">Party hire · Soft play · Bubble fun</p>
+                </div>
+            </div>
+
+            <button class="w-9 h-9 rounded-full bg-red-700 flex items-center justify-center shadow-md">
+                <i class="fa-regular fa-user text-yellow-300 text-sm"></i>
+            </button>
+        </header>
+
+        <!-- HERO / NEXT AVAILABLE -->
+        <section class="hero-bg relative text-white px-4 pt-4 pb-5">
+            <div class="absolute inset-0 bg-gradient-to-t from-red-900/80 via-red-900/30 to-red-900/60"></div>
+            <div class="relative">
+                <p class="text-xs uppercase tracking-[0.2em] text-red-100 mb-1">BOOK YOUR PARTY</p>
+                <h1 class="text-2xl font-bold mb-2">
+                    Stress-free parties,<br>epic memories 🎉
+                </h1>
+                <p class="text-sm text-red-100 mb-4">
+                    Indoor & outdoor setups, safe for kids, fully insured. Choose your package, pick a date, and we’ll handle the rest.
+                </p>
+
+                <div class="flex gap-3">
+                    <button class="flex-1 bg-yellow-400 text-red-900 font-semibold py-2.5 rounded-2xl flex items-center justify-center gap-2 shadow-lg">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <span>Quick Book</span>
+                    </button>
+                    <button class="flex-1 border border-yellow-400/70 text-yellow-300 font-semibold py-2.5 rounded-2xl flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-gift"></i>
+                        <span>View Deals</span>
+                    </button>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between text-xs text-red-100">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-regular fa-clock text-yellow-300"></i>
+                        <span>Next available: <span class="font-semibold text-white">This Saturday</span></span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <i class="fa-solid fa-shield-heart text-green-300"></i>
+                        <span>Fully insured</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN SCROLL AREA -->
+        <main class="flex-1 overflow-y-auto pb-20 bg-gradient-to-b from-red-900/80 to-black/80">
+            <!-- CATEGORY FILTER TABS -->
+            <div class="px-4 pt-4">
+                <div class="flex gap-2 overflow-x-auto no-scrollbar text-sm">
+                    <button class="px-3 py-1.5 rounded-full bg-yellow-400 text-red-900 font-semibold whitespace-nowrap">
+                        All
+                    </button>
+                    <button class="px-3 py-1.5 rounded-full bg-red-700/80 border border-red-500/60 whitespace-nowrap">
+                        Soft Play
+                    </button>
+                    <button class="px-3 py-1.5 rounded-full bg-red-700/80 border border-red-500/60 whitespace-nowrap">
+                        Bubble House
+                    </button>
+                    <button class="px-3 py-1.5 rounded-full bg-red-700/80 border border-red-500/60 whitespace-nowrap">
+                        Inflatables
+                    </button>
+                    <button class="px-3 py-1.5 rounded-full bg-red-700/80 border border-red-500/60 whitespace-nowrap">
+                        Add-ons
+                    </button>
+                </div>
+            </div>
+
+            <!-- PACKAGES / ITEMS -->
+            <section class="px-4 pt-4 space-y-4 text-sm">
+                <!-- BUBBLE HOUSE -->
+                <article class="bg-red-900/70 border border-red-700/80 rounded-2xl p-3.5 flex gap-3 shadow-md">
+                    <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-yellow-300 to-amber-500 flex items-center justify-center text-3xl shadow-inner">
+                        🫧
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between gap-2 mb-1">
+                            <h2 class="font-semibold text-base">Bubble House Experience</h2>
+                            <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/40">
+                                Most booked
+                            </span>
+                        </div>
+                        <p class="text-xs text-red-100 mb-2">
+                            Giant clear bubble dome with balloons & soft flooring. Perfect for photos, safe for little ones, pure ✨ wow-factor.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-red-200">From <span class="text-yellow-300 font-semibold">£160</span> · 3–4 hours</p>
+                                <p class="text-[11px] text-red-200">Up to 8–10 kids · Indoors or outdoors (weather permitting)</p>
+                            </div>
+                            <button class="ml-2 bg-yellow-400 text-red-900 text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1 shadow-lg">
+                                <i class="fa-regular fa-calendar"></i>
+                                <span>Book</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- SOFT PLAY -->
+                <article class="bg-red-900/70 border border-red-700/80 rounded-2xl p-3.5 flex gap-3 shadow-md">
+                    <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-sky-400 to-blue-500 flex items-center justify-center text-3xl shadow-inner">
+                        🧸
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between gap-2 mb-1">
+                            <h2 class="font-semibold text-base">Soft Play Adventure Zone</h2>
+                            <span class="text-xs px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-300 border border-sky-400/40">
+                                Age 1–5
+                            </span>
+                        </div>
+                        <p class="text-xs text-red-100 mb-2">
+                            Foam blocks, mini slide, ball pit, ride-ons & safety mats. A cosy, contained play area for toddlers and little explorers.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-red-200">From <span class="text-yellow-300 font-semibold">£120</span> · 3 hours</p>
+                                <p class="text-[11px] text-red-200">Indoor setups only · Includes setup & pack down</p>
+                            </div>
+                            <button class="ml-2 bg-yellow-400 text-red-900 text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1 shadow-lg">
+                                <i class="fa-regular fa-calendar-plus"></i>
+                                <span>Book</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- BOUNCY CASTLE -->
+                <article class="bg-red-900/70 border border-red-700/80 rounded-2xl p-3.5 flex gap-3 shadow-md">
+                    <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-400 to-fuchsia-500 flex items-center justify-center text-3xl shadow-inner">
+                        🏰
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between gap-2 mb-1">
+                            <h2 class="font-semibold text-base">Classic Bouncy Castle</h2>
+                            <span class="text-xs px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-200 border border-purple-400/40">
+                                Outdoor favourite
+                            </span>
+                        </div>
+                        <p class="text-xs text-red-100 mb-2">
+                            High-quality inflatable castle with safety walls, ideal for birthdays, school events, and garden parties.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-red-200">From <span class="text-yellow-300 font-semibold">£110</span> · Full day</p>
+                                <p class="text-[11px] text-red-200">Weather-dependent · Power access required</p>
+                            </div>
+                            <button class="ml-2 bg-yellow-400 text-red-900 text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1 shadow-lg">
+                                <i class="fa-regular fa-calendar-days"></i>
+                                <span>Book</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ADD-ONS -->
+                <article class="bg-red-900/70 border border-red-700/80 rounded-2xl p-3.5 shadow-md">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-2xl">✨</span>
+                        <h2 class="font-semibold text-base">Fun Add-ons</h2>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div class="bg-red-800/70 rounded-xl p-2 flex flex-col gap-1">
+                            <div class="flex items-center gap-1">
+                                <span>🍭</span><span class="font-semibold">Candy Floss</span>
+                            </div>
+                            <p class="text-[11px] text-red-100">Freshly spun, party favourite.</p>
+                            <p class="text-[11px] text-yellow-300 font-semibold mt-1">+£45</p>
+                        </div>
+                        <div class="bg-red-800/70 rounded-xl p-2 flex flex-col gap-1">
+                            <div class="flex items-center gap-1">
+                                <span>🍿</span><span class="font-semibold">Popcorn Station</span>
+                            </div>
+                            <p class="text-[11px] text-red-100">Warm, sweet, cinema-style.</p>
+                            <p class="text-[11px] text-yellow-300 font-semibold mt-1">+£45</p>
+                        </div>
+                        <div class="bg-red-800/70 rounded-xl p-2 flex flex-col gap-1">
+                            <div class="flex items-center gap-1">
+                                <span>🎈</span><span class="font-semibold">Balloon Decor</span>
+                            </div>
+                            <p class="text-[11px] text-red-100">Arches, clusters & backdrops.</p>
+                            <p class="text-[11px] text-yellow-300 font-semibold mt-1">From £60</p>
+                        </div>
+                        <div class="bg-red-800/70 rounded-xl p-2 flex flex-col gap-1">
+                            <div class="flex items-center gap-1">
+                                <span>📷</span><span class="font-semibold">Photo Backdrop</span>
+                            </div>
+                            <p class="text-[11px] text-red-100">Perfect for Insta-worthy pics.</p>
+                            <p class="text-[11px] text-yellow-300 font-semibold mt-1">From £50</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- INFO / SAFETY -->
+            <section class="px-4 pt-4 pb-4 text-[11px] text-red-100">
+                <div class="bg-red-950/70 border border-red-700/80 rounded-2xl p-3 flex gap-2">
+                    <i class="fa-solid fa-circle-info text-yellow-300 mt-0.5"></i>
+                    <div>
+                        <p class="font-semibold text-xs mb-1">Safety & Setup</p>
+                        <p>All equipment is cleaned before each hire, and we carry full public liability insurance. Setup usually takes 30–45 minutes before your booking time.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- BOTTOM NAV / APP STYLE -->
+        <nav class="bg-red-950/95 backdrop-blur border-t border-red-700/80 px-6 py-2.5 flex items-center justify-between text-xs sticky bottom-0 z-20">
+            <button class="flex flex-col items-center text-yellow-300">
+                <i class="fa-solid fa-house text-lg mb-0.5"></i>
+                <span>Home</span>
+            </button>
+            <button class="flex flex-col items-center text-red-200">
+                <i class="fa-regular fa-calendar text-lg mb-0.5"></i>
+                <span>Bookings</span>
+            </button>
+            <button class="flex flex-col items-center text-red-200">
+                <i class="fa-regular fa-heart text-lg mb-0.5"></i>
+                <span>Favourites</span>
+            </button>
+            <button class="flex flex-col items-center text-red-200">
+                <i class="fa-solid fa-message text-lg mb-0.5"></i>
+                <span>Contact</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- EXTRA: no-scrollbar helper (optional) -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Impact:wght@400;700&family=Poppins:wght@400;600;700&display=swap');
-        
-        :root {
-            --red: #e6392e;
-            --yellow: #ffd700;
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #e6392e 0%, #b71c1c 100%);
-            color: white;
-            min-height: 100vh;
-            overflow-x: hidden;
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
-
         .logo-font {
             font-family: 'Impact', sans-serif;
-            letter-spacing: -4px;
+            letter-spacing: -3px;
         }
-
         .hero-bg {
-            background-image: linear-gradient(rgba(182, 28, 28, 0.72), rgba(182, 28, 28, 0.88)), 
-                              url('https://picsum.photos/id/1015/1200/800');
+            background-image:
+                linear-gradient(rgba(182, 28, 28, 0.85), rgba(0, 0, 0, 0.9)),
+                url('[picsum.photos](https://picsum.photos/id/1015/1200/800)');
             background-size: cover;
             background-position: center;
         }
-
-        /* Blob bg accents */
-        .blob {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(90px);
-            opacity: 0.18;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .blob-1 { width:500px;height:500px;background:#ffd700;top:-120px;right:-120px;animation:b1 11s ease-in-out infinite alternate; }
-        .blob-2 { width:380px;height:380px;background:#ff6b35;bottom:-80px;left:-80px;animation:b2 13s ease-in-out infinite alternate; }
-        @keyframes b1 { from{transform:translate(0,0)scale(1)} to{transform:translate(-50px,70px)scale(1.2)} }
-        @keyframes b2 { from{transform:translate(0,0)scale(1)} to{transform:translate(50px,-50px)scale(1.1)} }
-
-        .bounce {
-            animation: bounce 2.8s infinite ease-in-out;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-25px); }
-        }
-
-        .party-float {
-            animation: float 4s infinite ease-in-out;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(8deg); }
-        }
-
-        .card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 30px 60px -15px rgb(0 0 0 / 0.5);
-        }
-
-        .btn-yellow {
-            background: #ffd700;
-            color: #b71c1c;
-            font-weight: 700;
-            transition: all 0.4s ease;
-        }
-        .btn-yellow:hover {
-            background: white;
-            transform: scale(1.08) rotate(1.5deg);
-            color: #b71c1c;
-        }
-
-        /* Ticker */
-        .ticker-wrap {
-            overflow: hidden;
-            background: #ffd700;
-            color: #b71c1c;
-            font-family: 'Impact', sans-serif;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            white-space: nowrap;
-            padding: 10px 0;
-            border-top: 3px solid #b71c1c;
-            border-bottom: 3px solid #b71c1c;
-        }
-        .ticker-inner {
-            display: inline-block;
-            animation: ticker 30s linear infinite;
-        }
-        @keyframes ticker {
-            0%   { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* Stats */
-        .stat-card {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,215,0,0.25);
-            border-radius: 20px;
-            backdrop-filter: blur(16px);
-        }
-
-        /* Modal */
-        .modal {
-            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        @keyframes modalPop {
-            0% { transform: scale(0.7); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        /* Section fade-in on scroll */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
     </style>
-</head>
-<body>
-
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-
-    <!-- Navbar -->
-    <nav class="bg-black/80 backdrop-blur-xl border-b border-yellow-400 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
-            <!-- Logo text only -->
-            <div class="logo-font text-3xl tracking-tight leading-none">
-                <span class="text-yellow-400">BGM</span>
-                <span class="text-white"> PARTY HIRE</span>
-            </div>
-            
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#" class="hover:text-yellow-400 transition">Home</a>
-                <a href="#inflatables" class="hover:text-yellow-400 transition">Our Inflatables</a>
-                <a href="#" onclick="showBookingModal();return false;" class="hover:text-yellow-400 transition">Book Now</a>
-                <a href="#" class="hover:text-yellow-400 transition">Gallery</a>
-                <a href="#" class="hover:text-yellow-400 transition">Contact</a>
-            </div>
-
-            <button onclick="showBookingModal()" 
-                    class="bg-yellow-400 text-red-700 px-6 py-3 rounded-2xl font-bold text-sm flex items-center gap-2 hover:scale-105 transition shadow-lg">
-                <i class="fa-solid fa-calendar"></i>
-                BOOK NOW
-            </button>
-        </div>
-    </nav>
-
-    <!-- Hero -->
-    <div class="hero-bg min-h-screen flex flex-col items-center justify-center text-center px-5 relative z-10">
-
-        <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold logo-font tracking-[-4px] leading-none mb-6 drop-shadow-xl">
-            MAKE IT<br><span class="text-yellow-400">EPIC</span>
-        </h1>
-        
-        <p class="text-xl md:text-2xl text-yellow-100 max-w-lg mx-auto mb-4">
-            Premium bouncy castles, bubble houses &amp; inflatable fun across the UK
-        </p>
-
-        <!-- Rating pill -->
-        <div class="flex items-center gap-2 bg-black/30 border border-yellow-400/40 rounded-full px-5 py-2 mb-10 text-sm font-semibold">
-            <span class="text-yellow-400">★★★★★</span>
-            <span>4.98/5 from 200+ parties</span>
-        </div>
-
-        <div class="flex flex-col sm:flex-row gap-5 w-full max-w-md mx-auto">
-            <button onclick="showBookingModal()" 
-                    class="btn-yellow px-10 py-6 rounded-3xl text-xl font-bold flex items-center justify-center gap-3 shadow-2xl">
-                <i class="fa-solid fa-party-horn"></i>
-                BOOK YOUR PARTY
-            </button>
-            <a href="#inflatables"
-               class="border-2 border-white hover:bg-white hover:text-red-700 px-10 py-6 rounded-3xl text-xl font-bold transition-all text-center">
-                SEE PACKAGES
-            </a>
-        </div>
-
-        <!-- Floating Party Elements -->
-        <div class="absolute top-24 right-8 text-7xl party-float hidden lg:block">🎈</div>
-        <div class="absolute bottom-40 left-12 text-6xl party-float hidden lg:block" style="animation-delay:1.2s">🫧</div>
-        <div class="absolute top-1/3 left-8 text-5xl party-float hidden lg:block" style="animation-delay:2s">🎉</div>
-    </div>
-
-    <!-- Ticker -->
-    <div class="ticker-wrap relative z-10">
-        <div class="ticker-inner">
-            &nbsp;&nbsp;&nbsp;🎉 BOUNCY CASTLES &nbsp;•&nbsp; 🫧 BUBBLE HOUSES &nbsp;•&nbsp; 🎯 GIANT CONNECT FOUR &nbsp;•&nbsp; 🏰 THEMED CASTLES &nbsp;•&nbsp; 🚚 FREE DELIVERY WITHIN 25 MILES &nbsp;•&nbsp; ⭐ 4.98 STAR RATED &nbsp;•&nbsp; 🛡️ FULLY INSURED &nbsp;•&nbsp;
-            &nbsp;&nbsp;&nbsp;🎉 BOUNCY CASTLES &nbsp;•&nbsp; 🫧 BUBBLE HOUSES &nbsp;•&nbsp; 🎯 GIANT CONNECT FOUR &nbsp;•&nbsp; 🏰 THEMED CASTLES &nbsp;•&nbsp; 🚚 FREE DELIVERY WITHIN 25 MILES &nbsp;•&nbsp; ⭐ 4.98 STAR RATED &nbsp;•&nbsp; 🛡️ FULLY INSURED &nbsp;•&nbsp;
-        </div>
-    </div>
-
-    <!-- Trust Bar -->
-    <div class="bg-black/40 py-8 relative z-10">
-        <div class="max-w-7xl mx-auto px-5 flex flex-wrap justify-center items-center gap-8 md:gap-16 text-center">
-            <div class="flex items-center gap-3">
-                <i class="fa-solid fa-star text-yellow-400 text-3xl"></i>
-                <div>
-                    <div class="font-bold text-lg">4.98/5</div>
-                    <div class="text-xs opacity-75">from 200+ parties</div>
-                </div>
-            </div>
-            <div class="flex items-center gap-3">
-                <i class="fa-solid fa-truck text-yellow-400 text-3xl"></i>
-                <div>
-                    <div class="font-bold text-lg">FREE Delivery</div>
-                    <div class="text-xs opacity-75">Within 25 miles</div>
-                </div>
-            </div>
-            <div class="flex items-center gap-3">
-                <i class="fa-solid fa-shield-halved text-yellow-400 text-3xl"></i>
-                <div>
-                    <div class="font-bold text-lg">Fully Insured</div>
-                    <div class="text-xs opacity-75">Safety first</div>
-                </div>
-            </div>
-            <div class="flex items-center gap-3">
-                <i class="fa-solid fa-clock text-yellow-400 text-3xl"></i>
-                <div>
-                    <div class="font-bold text-lg">Same Day Setup</div>
-                    <div class="text-xs opacity-75">We handle everything</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Services -->
-    <div id="inflatables" class="max-w-7xl mx-auto px-5 py-20 relative z-10">
+</body>
+">
         <div class="fade-up text-center mb-14">
             <h2 class="text-5xl md:text-6xl font-bold mb-4">Our Epic Inflatables</h2>
             <p class="text-yellow-100 max-w-md mx-auto text-lg">From bouncy castles to bubble houses and giant garden games — we've got your party covered</p>
