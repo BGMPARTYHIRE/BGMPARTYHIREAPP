@@ -25,8 +25,9 @@
 <!-- Top App Bar -->
 <header class="bg-red-900/80 backdrop-blur flex items-center justify-between px-6 py-4 sticky top-0 z-20 rounded-t-3xl">
   <div class="flex items-center gap-3">
-    <div class="w-12 h-12 rounded-2xl bg-yellow-400 flex items-center justify-center shadow-lg">
-      <i class="fa-solid fa-party-horn text-red-700 text-xl"></i>
+    <!-- Logo icon with your image -->
+    <div class="w-12 h-12 rounded-2xl bg-yellow-400 flex items-center justify-center shadow-lg overflow-hidden">
+      <img src="logo.png" alt="Logo" class="w-8 h-8 object-contain" />
     </div>
     <div>
       <div class="logo-font text-2xl leading-none tracking-tight font-bold">
@@ -177,6 +178,7 @@
         </button>
       </div>
     </div>
+
   </section>
 </main>
 
@@ -246,394 +248,6 @@
     </div>
     <!-- Booking Form -->
     <div class="p-8 space-y-6 max-h-[80vh] overflow-y-auto">
-      <div>
-        <label class="block text-sm font-semibold mb-2 text-red-800">Child's Name</label>
-        <input id="childName" type="text" placeholder="e.g. Tommy" class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none text-lg" />
-      </div>
-      <div>
-        <label class="block text-sm font-semibold mb-2 text-red-800">Parent's Name</label>
-        <input id="parentName" type="text" placeholder="Your Name" class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none" />
-      </div>
-      <div>
-        <label class="block text-sm font-semibold mb-2 text-red-800">Phone Number</label>
-        <input id="phone" type="tel" placeholder="07xxx xxxxxx" class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none" />
-      </div>
-      <div>
-        <label class="block text-sm font-semibold mb-2 text-red-800">Email Address</label>
-        <input id="email" type="email" placeholder="parent@email.com" class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none" />
-      </div>
-      <div>
-        <label class="block text-sm font-semibold mb-2 text-red-800">Package</label>
-        <select id="package" class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none bg-white text-red-900">
-          <option value="">Select a package...</option>
-          <option>Bubble House Experience</option>
-          <option>Soft Play Adventure Zone</option>
-          <option>Classic Bouncy Castle</option>
-          <option>Outdoor Bouncy Castle</option>
-          <option>Huge Connect Four & More</option>
-          <option>Multiple items — surprise me!</option>
-        </select>
-      </div>
-      <div>
-        <label class="block text-sm font-semibold mb-2 text-red-800">Party Date</label>
-        <input id="partyDate" type="date" class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none text-lg" />
-      </div>
-      <!-- Submit Button -->
-      <div class="pt-4">
-        <button onclick="submitBooking()" class="w-full bg-yellow-400 text-red-900 py-4 px-8 rounded-3xl font-semibold shadow-lg hover:scale-105 transition flex items-center justify-center gap-2">
-          <i class="fa-solid fa-party-horn"></i> BOOK NOW
-        </button>
-      </div>
-      <p class="text-center text-xs text-red-500 mt-4">We'll get back to you within 24 hours to confirm.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Scripts -->
-<script>
-  function showBookingModal() {
-    document.getElementById('bookingModal').classList.remove('hidden');
-    document.getElementById('bookingModal').classList.add('flex');
-    const today = new Date();
-    today.setDate(today.getDate() + 7);
-    document.getElementById('partyDate').value = today.toISOString().split('T')[0];
-  }
-  function closeModal() {
-    document.getElementById('bookingModal').classList.add('hidden');
-    document.getElementById('bookingModal').classList.remove('flex');
-  }
-
-  function showBookingForm(title, price, description, duration) {
-    // You could customize the modal with info here if needed
-    showBookingModal();
-  }
-
-  function filterPackages(category) {
-    const packages = document.querySelectorAll('.package');
-    packages.forEach(pkg => {
-      if (category === 'All' || pkg.dataset.category === category) {
-        pkg.style.display = '';
-      } else {
-        pkg.style.display = 'none';
-      }
-    });
-  }
-
-  function submitBooking() {
-    const childName = document.getElementById('childName').value.trim();
-    const parentName = document.getElementById('parentName').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const packageSelected = document.getElementById('package').value;
-    const date = document.getElementById('partyDate').value;
-
-    if (!childName || !parentName || !phone || !email || !packageSelected || !date) {
-      alert("Please fill in all fields ✨");
-      return;
-    }
-
-    alert(`Thank you, ${parentName}!\nYour booking for ${childName} on ${date} has been received.`);
-    closeModal();
-
-    // Reset form
-    document.getElementById('childName').value = '';
-    document.getElementById('parentName').value = '';
-    document.getElementById('phone').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('package').value = '';
-    document.getElementById('partyDate').value = '';
-  }
-
-  document.getElementById('bookingModal').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) closeModal();
-  });
-</script>
-
-</body>
-</html>ngForm('Outdoor Bouncy Castle', '£130', 'Full day', 'Weather permitting')">
-        <i class="fa-regular fa-calendar-days"></i> Book
-      </button>
-    </div>
-
-    <!-- Huge Connect Four & Games -->
-    <div class="bg-red-900/70 border border-red-700/80 rounded-3xl p-4 shadow-lg hover:scale-105 transition duration-300" data-category="Games">
-      <div class="h-64 bg-gradient-to-br from-pink-400 to-fuchsia-600 flex items-center justify-center rounded-xl relative overflow-hidden mb-4">
-        <div class="absolute inset-0 bg-black/10 rounded-xl"></div>
-        <div class="relative text-5xl z-10">🎲</div>
-      </div>
-      <h3 class="text-2xl font-bold mb-2">Huge Connect Four & More</h3>
-      <p class="text-xs mb-2">Giant garden games, perfect for all ages. Includes Connect Four, Jenga, and more fun!</p>
-      <div class="flex justify-center">
-        <button class="bg-yellow-400 text-red-900 px-4 py-2 rounded-3xl font-semibold flex items-center gap-2 shadow-lg" onclick="showBookingForm('Connect Four & Games', '£80', 'Giant Connect Four, Jenga, More', '4 hours')">
-          <i class="fa-regular fa-calendar"></i> Book
-        </button>
-      </div>
-    </div>
-  </section>
-</main>
-
-<!-- Why Us -->
-<div class="bg-black/50 py-16">
-  <div class="max-w-5xl mx-auto px-6 text-center">
-    <h2 class="text-4xl md:text-5xl font-bold mb-8 fade-up">
-      Why families choose <span class="text-yellow-400">BGM</span>
-    </h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 fade-up">
-      <div class="text-center">
-        <div class="text-5xl mb-3">🚀</div>
-        <div class="font-bold">Fast Setup</div>
-        <div class="text-sm opacity-70 mt-1">We arrive early, set up quick</div>
-      </div>
-      <div class="text-center">
-        <div class="text-5xl mb-3">🧼</div>
-        <div class="font-bold">Always Clean</div>
-        <div class="text-sm opacity-70 mt-1">Sanitised before every hire</div>
-      </div>
-      <div class="text-center">
-        <div class="text-5xl mb-3">🌧️</div>
-        <div class="font-bold">Weather Proof</div>
-        <div class="text-sm opacity-70 mt-1">We’ll reschedule if needed</div>
-      </div>
-      <div class="text-center">
-        <div class="text-5xl mb-3">📞</div>
-        <div class="font-bold">Always On Call</div>
-        <div class="text-sm opacity-70 mt-1">Support on the day</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Final CTA -->
-<div class="bg-black/60 py-24 text-center fade-up">
-  <div class="max-w-2xl mx-auto px-6">
-    <p class="text-yellow-400 font-bold tracking-widest text-sm mb-4 uppercase">Limited dates this summer</p>
-    <h2 class="text-4xl md:text-5xl font-bold mb-6 logo-font tracking-tight">READY TO MAKE IT EPIC?</h2>
-    <button onclick="showBookingModal()" class="btn-yellow px-12 py-5 rounded-3xl text-2xl font-bold shadow-2xl flex items-center justify-center gap-4 hover:scale-105 transition">
-      <i class="fa-solid fa-rocket"></i> BOOK YOUR DATE NOW
-    </button>
-    <p class="mt-6 text-yellow-200 opacity-80">Secure your date — slots fill up fast!</p>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer class="bg-black py-8 border-t border-yellow-400 text-center text-sm opacity-50">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="logo-font text-3xl mb-2">
-      <span class="text-yellow-400">BGM</span> PARTY HIRE
-    </div>
-    <p>© 2026 BGM Party Hire • Premium Inflatable Entertainment across the UK</p>
-  </div>
-</footer>
-
-<!-- Booking Modal -->
-<div id="bookingModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100] p-4">
-  <div class="bg-white text-red-900 rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl animate-fadeIn">
-    <!-- Modal Header -->
-    <div class="bg-gradient-to-r from-red-600 to-red-700 px-8 py-6 text-white flex items-center justify-between rounded-t-3xl">
-      <div>
-        <h2 class="text-3xl font-bold logo-font tracking-tight">BOOK YOUR PARTY</h2>
-        <p class="text-yellow-300 text-sm mt-1">Let's make it unforgettable!</p>
-      </div>
-      <button onclick="closeModal()" class="text-4xl leading-none hover:text-yellow-300 transition">&times;</button>
-    </div>
-    <!-- Booking Form -->
-    <div class="p-8 space-y-6 max-h-[80vh] overflow-y-auto">
-      <div>
-        <label class="block text-sm font-semibold mb-2 text-red-800">Child's Name</label>
-        <input id="childName" type="text" placeholder="e.g. Tommy" class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none text-lg" />
-      </div>
-      <div>
-        <label class="block text-sm font-semibold mb-2 text-red-800">Parent's Name</label>
-        <input id="parentName" type="text" placeholder="Your Name" class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none" />
-      </div>
-      <div>
-        <label class="block text-sm font-semibold mb-2 text-red-800">Phone Number</label>
-        <input id="phone" type="tel" placeholder="07xxx xxxxxx" class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none" />
-      </div>
-      <div>
-        <label class="block text-sm font-semibold mb-2 text-red-800">Email Address</label>
-        <input id="email" type="email" placeholder="parent@email.com" class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none" />
-      </div>
-      <div>
-        <label class="block text-sm font-semibold mb-2 text-red-800">Package</label>
-        <select id="package" class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none bg-white text-red-900">
-          <option value="">Select a package...</option>
-          <option>Bubble House Experience</option>
-          <option>Soft Play Adventure Zone</option>
-          <option>Classic Bouncy Castle</option>
-          <option>Outdoor Bouncy Castle</option>
-          <option>Huge Connect Four & More</option>
-          <option>Multiple items — surprise me!</option>
-        </select>
-      </div>
-      <div>
-        <label class="block text-sm font-semibold mb-2 text-red-800">Party Date</label>
-        <input id="partyDate" type="date" class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none text-lg" />
-      </div>
-      <!-- Submit Button -->
-      <div class="pt-4">
-        <button onclick="submitBooking()" class="w-full bg-yellow-400 text-red-900 py-4 px-8 rounded-3xl font-semibold shadow-lg hover:scale-105 transition flex items-center justify-center gap-2">
-          <i class="fa-solid fa-party-horn"></i> BOOK NOW
-        </button>
-      </div>
-      <p class="text-center text-xs text-red-500 mt-4">We'll get back to you within 24 hours to confirm.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Scripts -->
-<script>
-  function showBookingModal() {
-    document.getElementById('bookingModal').classList.remove('hidden');
-    document.getElementById('bookingModal').classList.add('flex');
-    const today = new Date();
-    today.setDate(today.getDate() + 7);
-    document.getElementById('partyDate').value = today.toISOString().split('T')[0];
-  }
-  function closeModal() {
-    document.getElementById('bookingModal').classList.add('hidden');
-    document.getElementById('bookingModal').classList.remove('flex');
-  }
-
-  function showBookingForm(title, price, description, duration) {
-    // Fill the form with info if needed, for now keep generic
-    showBookingModal();
-  }
-
-  // Filter packages based on category
-  function filterPackages(category) {
-    const packages = document.querySelectorAll('.package');
-    packages.forEach(pkg => {
-      if (category === 'All' || pkg.dataset.category === category) {
-        pkg.style.display = '';
-      } else {
-        pkg.style.display = 'none';
-      }
-    });
-  }
-
-  // Booking form submission
-function submitBooking() {
-  const childName = document.getElementById('childName').value.trim();
-  const parentName = document.getElementById('parentName').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const packageSelected = document.getElementById('package').value;
-  const date = document.getElementById('partyDate').value;
-
-  if (!childName || !parentName || !phone || !email || !packageSelected || !date) {
-    alert("Please fill in all fields ✨");
-    return;
-  }
-
-  alert(`Thank you, ${parentName}!\nYour booking for ${childName} on ${date} has been received.`);
-  closeModal();
-
-  // Reset form
-  document.getElementById('childName').value = '';
-  document.getElementById('parentName').value = '';
-  document.getElementById('phone').value = '';
-  document.getElementById('email').value = '';
-  document.getElementById('package').value = '';
-  document.getElementById('partyDate').value = '';
-}
-
-// Optional: handle outside click to close modal
-document.getElementById('bookingModal').addEventListener('click', (e) => {
-  if (e.target === e.currentTarget) closeModal();
-});
-</script>
-
-</body>
-</html>l day', 'Weather permitting')">
-        <i class="fa-regular fa-calendar-days"></i> Book
-      </button>
-    </div>
-
-    <!-- Games: Huge Connect Four & More -->
-    <div class="bg-red-900/70 border border-red-700/80 rounded-3xl p-4 shadow-lg hover:scale-105 transition duration-300">
-      <div class="h-64 bg-gradient-to-br from-pink-400 to-fuchsia-600 flex items-center justify-center rounded-xl relative overflow-hidden mb-4">
-        <div class="absolute inset-0 bg-black/10 rounded-xl"></div>
-        <div class="relative text-5xl z-10">🎲</div>
-      </div>
-      <h3 class="text-2xl font-bold mb-2">Huge Connect Four & More</h3>
-      <p class="text-xs mb-2">Giant garden games, perfect for all ages. Includes Connect Four, Jenga, and more fun!</p>
-      <div class="flex justify-center">
-        <button class="bg-yellow-400 text-red-900 px-4 py-2 rounded-3xl font-semibold flex items-center gap-2 shadow-lg hover:scale-105 transition" onclick="showBookingForm('Connect Four & Games', '£80', 'Giant Connect Four, Jenga, More', '4 hours')">
-          <i class="fa-regular fa-calendar"></i> Book
-        </button>
-      </div>
-    </div>
-  </section>
-</main>
-
-<!-- Why Us -->
-<div class="bg-black/50 py-16">
-  <div class="max-w-5xl mx-auto px-6 text-center">
-    <h2 class="text-4xl md:text-5xl font-bold mb-8 fade-up">
-      Why families choose <span class="text-yellow-400">BGM</span>
-    </h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 fade-up">
-      <div class="text-center">
-        <div class="text-5xl mb-3">🚀</div>
-        <div class="font-bold">Fast Setup</div>
-        <div class="text-sm opacity-70 mt-1">We arrive early, set up quick</div>
-      </div>
-      <div class="text-center">
-        <div class="text-5xl mb-3">🧼</div>
-        <div class="font-bold">Always Clean</div>
-        <div class="text-sm opacity-70 mt-1">Sanitised before every hire</div>
-      </div>
-      <div class="text-center">
-        <div class="text-5xl mb-3">🌧️</div>
-        <div class="font-bold">Weather Proof</div>
-        <div class="text-sm opacity-70 mt-1">We’ll reschedule if needed</div>
-      </div>
-      <div class="text-center">
-        <div class="text-5xl mb-3">📞</div>
-        <div class="font-bold">Always On Call</div>
-        <div class="text-sm opacity-70 mt-1">Support on the day</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Final Call-to-Action -->
-<div class="bg-black/60 py-24 text-center fade-up">
-  <div class="max-w-2xl mx-auto px-6">
-    <p class="text-yellow-400 font-bold tracking-widest text-sm mb-4 uppercase">Limited dates this summer</p>
-    <h2 class="text-4xl md:text-5xl font-bold mb-6 logo-font tracking-tight">READY TO MAKE IT EPIC?</h2>
-    <button onclick="showBookingModal()" class="btn-yellow px-12 py-5 rounded-3xl text-2xl font-bold shadow-2xl flex items-center justify-center gap-4 hover:scale-105 transition">
-      <i class="fa-solid fa-rocket"></i> BOOK YOUR DATE NOW
-    </button>
-    <p class="mt-6 text-yellow-200 opacity-80">Secure your date — slots fill up fast!</p>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer class="bg-black py-8 border-t border-yellow-400 text-center text-sm opacity-50">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="logo-font text-3xl mb-2">
-      <span class="text-yellow-400">BGM</span> PARTY HIRE
-    </div>
-    <p>© 2026 BGM Party Hire • Premium Inflatable Entertainment across the UK</p>
-  </div>
-</footer>
-
-<!-- Booking Modal -->
-<div id="bookingModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100] p-4">
-  <div class="bg-white text-red-900 rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl animate-fadeIn">
-    <!-- Modal Header -->
-    <div class="bg-gradient-to-r from-red-600 to-red-700 px-8 py-6 text-white flex items-center justify-between rounded-t-3xl">
-      <div>
-        <h2 class="text-3xl font-bold logo-font tracking-tight">BOOK YOUR PARTY</h2>
-        <p class="text-yellow-300 text-sm mt-1">Let's make it unforgettable!</p>
-      </div>
-      <button onclick="closeModal()" class="text-4xl leading-none hover:text-yellow-300 transition">&times;</button>
-    </div>
-    <!-- Booking Form -->
-    <div class="p-8 space-y-6 max-h-[80vh] overflow-y-auto">
-      <!-- Form Fields -->
       <div>
         <label class="block text-sm font-semibold mb-2 text-red-800">Child's Name</label>
         <input id="childName" type="text" placeholder="e.g. Tommy" class="w-full px-5 py-4 rounded-2xl border border-red-200 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-200 outline-none text-lg" />
@@ -683,15 +297,31 @@ document.getElementById('bookingModal').addEventListener('click', (e) => {
   function showBookingModal() {
     document.getElementById('bookingModal').classList.remove('hidden');
     document.getElementById('bookingModal').classList.add('flex');
-    // default date +7 days
     const today = new Date();
     today.setDate(today.getDate() + 7);
     document.getElementById('partyDate').value = today.toISOString().split('T')[0];
   }
-  // Close modal
   function closeModal() {
     document.getElementById('bookingModal').classList.add('hidden');
     document.getElementById('bookingModal').classList.remove('flex');
+  }
+
+  // Show booking form with info (optional customization)
+  function showBookingForm(title, price, description, duration) {
+    showBookingModal();
+    // You can customize the modal header or fill in hidden fields if needed
+  }
+
+  // Filter packages
+  function filterPackages(category) {
+    const packages = document.querySelectorAll('.package');
+    packages.forEach(pkg => {
+      if (category === 'All' || pkg.dataset.category === category) {
+        pkg.style.display = '';
+      } else {
+        pkg.style.display = 'none';
+      }
+    });
   }
 
   // Submit booking
@@ -708,9 +338,7 @@ function submitBooking() {
     return;
   }
 
-  // Here you'd send data to your backend with fetch/AJAX
   alert(`Thank you, ${parentName}!\nYour booking for ${childName} on ${date} has been received.`);
-
   closeModal();
 
   // Clear form
@@ -721,15 +349,11 @@ function submitBooking() {
   document.getElementById('package').value = '';
   document.getElementById('partyDate').value = '';
 }
-// Optional: click outside modal to close
+
+// Optional: close modal on outside click
 document.getElementById('bookingModal').addEventListener('click', (e) => {
   if (e.target === e.currentTarget) closeModal();
 });
-
-// Dummy function for deals
-function showDeals() {
-  alert('Check back soon for special deals!');
-}
 </script>
 
 </body>
