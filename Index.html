@@ -4,468 +4,231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BGM Party Hire</title>
-    <meta name="description" content="Epic Birthday Parties - Bouncy Castles • Bubble House • Catering">
-    
-    <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#8b00ff">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fredoka:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Impact:wght@400;700&family=Poppins:wght@400;600;700&display=swap');
         
         :root {
-            --primary: #8b00ff;
-            --secondary: #ff00aa;
-            --accent: #00f0ff;
+            --red: #e6392e;
+            --yellow: #ffd700;
         }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1a0033 0%, #4b0082 100%);
+            background: linear-gradient(135deg, #e6392e 0%, #b71c1c 100%);
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
         }
-        
-        .balloons {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.15;
+
+        .logo-font {
+            font-family: 'Impact', sans-serif;
+            letter-spacing: -4px;
         }
-        
-        header {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(182, 28, 28, 0.7), rgba(182, 28, 28, 0.85)), 
+                              url('https://picsum.photos/id/1015/1200/800');
+            background-size: cover;
+            background-position: center;
         }
-        
-        .nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+        .bounce {
+            animation: bounce 2.8s infinite ease-in-out;
         }
-        
-        .logo {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, #ff00aa, #00f0ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-25px); }
         }
-        
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-            position: relative;
-            z-index: 2;
+
+        .party-float {
+            animation: float 4s infinite ease-in-out;
         }
-        
-        .hero {
-            text-align: center;
-            padding: 3rem 1rem 2rem;
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(8deg); }
         }
-        
-        .hero h1 {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 3.2rem;
-            line-height: 1.1;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(90deg, #fff, #00f0ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .tagline {
-            font-size: 1.3rem;
-            color: #ffd700;
-            margin-bottom: 2rem;
-        }
-        
-        .services {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin: 2rem 0;
-        }
-        
-        .service {
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            backdrop-filter: blur(10px);
-        }
-        
+
         .card {
-            background: rgba(255,255,255,0.1);
-            border-radius: 24px;
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        h2 {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            color: #ffd700;
+        .card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 60px -15px rgb(0 0 0 / 0.5);
         }
-        
-        form {
-            display: grid;
-            gap: 1.4rem;
-        }
-        
-        label {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        
-        input, select {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 16px;
-            font-size: 1.1rem;
-            background: rgba(255,255,255,0.9);
-            color: #1a0033;
-        }
-        
-        button {
-            padding: 18px;
-            font-size: 1.3rem;
+
+        .btn-yellow {
+            background: #ffd700;
+            color: #b71c1c;
             font-weight: 700;
-            border: none;
-            border-radius: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            transition: all 0.4s ease;
         }
-        
-        .btn-primary {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(139, 0, 255, 0.5);
-        }
-        
-        .available-dates {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1.2rem;
-        }
-        
-        .date-card {
-            background: linear-gradient(135deg, #4b0082, #8b00ff);
-            border-radius: 20px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s;
-            border: 3px solid rgba(255,215,0,0.6);
-        }
-        
-        .date-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            border-color: #ffd700;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background: linear-gradient(135deg, #2a0055, #4b0082);
-            border-radius: 24px;
-            width: 90%;
-            max-width: 420px;
-            padding: 2.5rem;
-            border: 2px solid #ffd700;
-        }
-        
-        .success-message {
-            background: #00ff88;
-            color: #003300;
-            padding: 1.2rem;
-            border-radius: 16px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.2rem;
+        .btn-yellow:hover {
+            background: white;
+            transform: scale(1.1) rotate(2deg);
+            color: #b71c1c;
         }
     </style>
 </head>
 <body>
-    <div class="balloons">🎈🎉🎈🎂🎈🎉</div>
-    
-    <header>
-        <div class="nav">
-            <div class="logo">🎪 BGM Party Hire</div>
-            <button onclick="showAdminLogin()" style="background:none;border:none;font-size:2rem;cursor:pointer;">👑</button>
-        </div>
-    </header>
 
-    <main>
-        <div class="hero">
-            <h1>Make Birthdays UNFORGETTABLE!</h1>
-            <p class="tagline">Bouncy Castles • Bubble House • Catering</p>
+    <!-- Navbar -->
+    <nav class="bg-black/80 backdrop-blur-xl border-b border-yellow-400 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="/home/workdir/attachments/Snapchat-1423612140.jpg" 
+                     alt="BGM Party Hire" 
+                     class="h-12 w-auto object-contain drop-shadow-md">
+            </div>
             
-            <div class="services">
-                <div class="service">🏰 Bouncy Castle</div>
-                <div class="service">🫧 Bubble House</div>
-                <div class="service">🍔 Catering</div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#" class="hover:text-yellow-400 transition">Home</a>
+                <a href="#" class="hover:text-yellow-400 transition">Our Inflatables</a>
+                <a href="#" class="hover:text-yellow-400 transition">Book Now</a>
+                <a href="#" class="hover:text-yellow-400 transition">Gallery</a>
+                <a href="#" class="hover:text-yellow-400 transition">Contact</a>
             </div>
+
+            <button onclick="bookNow()" 
+                    class="bg-yellow-400 text-red-700 px-6 py-3 rounded-2xl font-bold text-sm flex items-center gap-2 hover:scale-105 transition">
+                <i class="fa-solid fa-calendar"></i>
+                BOOK NOW
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero-bg min-h-screen flex flex-col items-center justify-center text-center px-5 relative">
+        <div class="max-w-[460px] w-full mb-8">
+            <img src="/home/workdir/attachments/Snapchat-1423612140.jpg" 
+                 alt="BGM Party Hire Logo" 
+                 class="w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] bounce">
         </div>
 
-        <!-- User View -->
-        <div id="user-view">
-            <div class="card">
-                <h2>Available Party Dates</h2>
-                <div id="available-dates" class="available-dates">
-                    <!-- Populated by JS -->
-                </div>
-            </div>
+        <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold logo-font tracking-[-4px] leading-none mb-6">
+            MAKE IT<br><span class="text-yellow-400">EPIC</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-yellow-100 max-w-lg mx-auto mb-12">
+            Premium bouncy castles, slides &amp; inflatable fun across the North West
+        </p>
 
-            <div class="card">
-                <h2>Book Your Party</h2>
-                <form id="booking-form">
-                    <div>
-                        <label>Child's Name / Party Name</label>
-                        <input type="text" id="name" required placeholder="e.g. Sophia's 7th Birthday">
-                    </div>
-                    <div>
-                        <label>Parent / Contact Name</label>
-                        <input type="text" id="contact" required placeholder="Your full name">
-                    </div>
-                    <div>
-                        <label>Phone Number</label>
-                        <input type="tel" id="phone" required placeholder="07700 900123">
-                    </div>
-                    <div>
-                        <label>Select Date</label>
-                        <select id="date-select" required>
-                            <!-- Populated by JS -->
-                        </select>
-                    </div>
-                    <button type="submit" class="btn-primary">BOOK THIS DATE 🎉</button>
-                </form>
-                <div id="success-msg" class="success-message" style="display:none; margin-top:1rem;">
-                    🎉 Booking Request Received! We’ll call you soon to confirm.
-                </div>
-            </div>
+        <div class="flex flex-col sm:flex-row gap-5 w-full max-w-md mx-auto">
+            <button onclick="bookNow()" 
+                    class="btn-yellow px-10 py-6 rounded-3xl text-xl font-bold flex items-center justify-center gap-3 shadow-2xl">
+                <i class="fa-solid fa-party-horn"></i>
+                BOOK YOUR PARTY
+            </button>
+            <button onclick="viewPackages()" 
+                    class="border-2 border-white hover:bg-white hover:text-red-700 px-10 py-6 rounded-3xl text-xl font-bold transition-all">
+                SEE PACKAGES
+            </button>
         </div>
 
-        <!-- Admin Panel -->
-        <div id="admin-panel" class="admin-panel" style="display:none;">
-            <div class="card">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
-                    <h2>👑 Admin Dashboard</h2>
-                    <button onclick="logoutAdmin()" style="background:#ff0066;color:white;padding:10px 20px;border-radius:12px;">Logout</button>
-                </div>
-                
-                <h3>Add New Available Date</h3>
-                <div style="display:flex;gap:12px;margin-bottom:2rem;">
-                    <input type="date" id="new-date" style="flex:1;padding:16px;border-radius:16px;">
-                    <button onclick="addAvailableDate()" class="btn-primary">Add Date</button>
-                </div>
+        <!-- Floating Party Elements -->
+        <div class="absolute top-24 right-8 text-7xl party-float hidden lg:block">🎈</div>
+        <div class="absolute bottom-40 left-12 text-6xl party-float hidden lg:block" style="animation-delay: 1.2s">🦕</div>
+        <div class="absolute top-1/3 left-8 text-5xl party-float hidden lg:block" style="animation-delay: 2s">🎉</div>
+    </div>
 
-                <h3>Available Dates</h3>
-                <div id="admin-available-dates" class="available-dates" style="margin-bottom:2.5rem;"></div>
-
-                <h3>Bookings Received</h3>
-                <div id="bookings-list" style="max-height:500px;overflow-y:auto;"></div>
+    <!-- Trust Bar -->
+    <div class="bg-black/40 py-6">
+        <div class="max-w-7xl mx-auto px-5 flex flex-wrap justify-center items-center gap-8 md:gap-16 text-center">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-star text-yellow-400 text-3xl"></i>
+                <div>
+                    <div class="font-bold">4.98/5</div>
+                    <div class="text-xs opacity-75">from 200+ parties</div>
+                </div>
             </div>
-        </div>
-    </main>
-
-    <!-- Admin Login Modal -->
-    <div id="admin-modal" class="modal">
-        <div class="modal-content">
-            <h2 style="text-align:center;margin-bottom:1.5rem;">Admin Login</h2>
-            <input type="text" id="admin-username" value="root" style="width:100%;padding:14px;margin:10px 0;border-radius:12px;">
-            <input type="password" id="admin-password" placeholder="Password" style="width:100%;padding:14px;margin:10px 0;border-radius:12px;">
-            <button onclick="loginAdmin()" class="btn-primary" style="width:100%;margin-top:1rem;">Login to Dashboard</button>
-            <button onclick="closeModal()" style="width:100%;margin-top:0.8rem;background:rgba(255,255,255,0.2);color:white;">Cancel</button>
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-truck text-yellow-400 text-3xl"></i>
+                <div>
+                    <div class="font-bold">FREE Delivery</div>
+                    <div class="text-xs opacity-75">Within 25 miles</div>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shield-halved text-yellow-400 text-3xl"></i>
+                <div>
+                    <div class="font-bold">Fully Insured</div>
+                    <div class="text-xs opacity-75">Safety first</div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Services -->
+    <div class="max-w-7xl mx-auto px-5 py-20">
+        <h2 class="text-center text-5xl font-bold mb-4">Our Epic Inflatables</h2>
+        <p class="text-center text-yellow-100 mb-12 max-w-md mx-auto">From bouncy castles to massive obstacle courses — we've got the perfect one for your party</p>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white/10 backdrop-blur-2xl rounded-3xl overflow-hidden card">
+                <div class="h-64 bg-gradient-to-br from-red-500 to-yellow-400 flex items-center justify-center text-8xl">🏰</div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-2">Bouncy Castles</h3>
+                    <p class="opacity-90">From princess themes to superhero adventures</p>
+                    <button onclick="bookNow()" class="mt-6 w-full bg-yellow-400 text-red-700 py-4 rounded-2xl font-bold">Hire Now →</button>
+                </div>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-2xl rounded-3xl overflow-hidden card">
+                <div class="h-64 bg-gradient-to-br from-purple-500 to-pink-400 flex items-center justify-center text-8xl">🛝</div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-2">Slides &amp; Combos</h3>
+                    <p class="opacity-90">Huge water slides and multi-play units</p>
+                    <button onclick="bookNow()" class="mt-6 w-full bg-yellow-400 text-red-700 py-4 rounded-2xl font-bold">Hire Now →</button>
+                </div>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-2xl rounded-3xl overflow-hidden card">
+                <div class="h-64 bg-gradient-to-br from-green-500 to-teal-400 flex items-center justify-center text-8xl">🏃‍♂️</div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-2">Obstacle Courses</h3>
+                    <p class="opacity-90">Perfect for older kids &amp; group fun</p>
+                    <button onclick="bookNow()" class="mt-6 w-full bg-yellow-400 text-red-700 py-4 rounded-2xl font-bold">Hire Now →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="bg-black/60 py-20 text-center">
+        <div class="max-w-xl mx-auto px-5">
+            <h2 class="text-5xl font-bold mb-6">Ready to throw the best party ever?</h2>
+            <button onclick="bookNow()" 
+                    class="btn-yellow px-16 py-7 rounded-3xl text-2xl font-bold inline-flex items-center gap-4">
+                <i class="fa-solid fa-rocket"></i>
+                BOOK YOUR DATE NOW
+            </button>
+            <p class="mt-6 text-yellow-200">Limited dates available this summer — secure yours today!</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-yellow-400">
+        <div class="max-w-7xl mx-auto px-5 text-center">
+            <img src="/home/workdir/attachments/Snapchat-1423612140.jpg" 
+                 alt="BGM Party Hire" 
+                 class="h-16 mx-auto mb-6 opacity-90">
+            <p class="text-sm opacity-60">© 2026 BGM Party Hire • Premium Inflatable Entertainment in the North West</p>
+        </div>
+    </footer>
+
     <script>
-        let availableDates = JSON.parse(localStorage.getItem('bgmDates')) || [
-            "2026-06-14", "2026-06-21", "2026-06-28", "2026-07-05", "2026-07-12", "2026-07-19"
-        ];
-        let bookings = JSON.parse(localStorage.getItem('bgmBookings')) || [];
-
-        function saveData() {
-            localStorage.setItem('bgmDates', JSON.stringify(availableDates));
-            localStorage.setItem('bgmBookings', JSON.stringify(bookings));
+        function bookNow() {
+            alert("🎉 Redirecting to booking calendar...");
+            // In real app: open booking modal or navigate to booking page
         }
-
-        function formatDate(dateStr) {
-            const date = new Date(dateStr);
-            return date.toLocaleDateString('en-GB', { 
-                weekday: 'long', 
-                day: 'numeric', 
-                month: 'long', 
-                year: 'numeric' 
-            });
+        
+        function viewPackages() {
+            alert("📋 Showing our full range of party packages...");
         }
-
-        function renderAvailableDates() {
-            const container = document.getElementById('available-dates');
-            const select = document.getElementById('date-select');
-            container.innerHTML = '';
-            select.innerHTML = '<option value="">Choose a date...</option>';
-
-            availableDates.forEach(date => {
-                const div = document.createElement('div');
-                div.className = 'date-card';
-                div.innerHTML = `<strong>${formatDate(date)}</strong><br><small>🎈 Available</small>`;
-                container.appendChild(div);
-
-                const opt = document.createElement('option');
-                opt.value = date;
-                opt.textContent = formatDate(date);
-                select.appendChild(opt);
-            });
-        }
-
-        function renderAdminDates() {
-            const container = document.getElementById('admin-available-dates');
-            container.innerHTML = '';
-            availableDates.forEach((date, i) => {
-                const div = document.createElement('div');
-                div.className = 'date-card';
-                div.innerHTML = `
-                    <strong>${formatDate(date)}</strong>
-                    <button onclick="removeDate(${i})" style="margin-top:10px;background:#ff0066;color:white;border:none;padding:8px 16px;border-radius:12px;">Remove</button>
-                `;
-                container.appendChild(div);
-            });
-        }
-
-        function renderBookings() {
-            const container = document.getElementById('bookings-list');
-            container.innerHTML = bookings.length === 0 ? 
-                '<p style="text-align:center;padding:2rem;color:#ffd700;">No bookings yet.</p>' : '';
-
-            bookings.forEach((b, i) => {
-                const div = document.createElement('div');
-                div.style = 'background:rgba(255,255,255,0.1);padding:1.2rem;margin-bottom:1rem;border-radius:16px;';
-                div.innerHTML = `
-                    <strong>${b.name}</strong><br>
-                    <small>${b.contact} • ${b.phone}</small><br>
-                    <span style="color:#ffd700">${formatDate(b.date)}</span>
-                    <button onclick="deleteBooking(${i})" style="float:right;background:#ff0066;color:white;border:none;padding:6px 14px;border-radius:10px;">Delete</button>
-                `;
-                container.appendChild(div);
-            });
-        }
-
-        function addAvailableDate() {
-            const date = document.getElementById('new-date').value;
-            if (!date) return alert("Pick a date first!");
-            if (availableDates.includes(date)) return alert("Date already added");
-            
-            availableDates.push(date);
-            availableDates.sort();
-            saveData();
-            renderAvailableDates();
-            renderAdminDates();
-        }
-
-        function removeDate(i) {
-            if (confirm("Remove this date?")) {
-                availableDates.splice(i, 1);
-                saveData();
-                renderAvailableDates();
-                renderAdminDates();
-            }
-        }
-
-        function deleteBooking(i) {
-            if (confirm("Delete booking?")) {
-                bookings.splice(i, 1);
-                saveData();
-                renderBookings();
-            }
-        }
-
-        document.getElementById('booking-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const contact = document.getElementById('contact').value;
-            const phone = document.getElementById('phone').value;
-            const date = document.getElementById('date-select').value;
-
-            bookings.push({ name, contact, phone, date, time: new Date().toLocaleString() });
-            saveData();
-            renderBookings();
-
-            document.getElementById('success-msg').style.display = 'block';
-            this.reset();
-            
-            setTimeout(() => document.getElementById('success-msg').style.display = 'none', 6000);
-        });
-
-        // Admin
-        function showAdminLogin() {
-            document.getElementById('admin-modal').style.display = 'flex';
-        }
-        function closeModal() {
-            document.getElementById('admin-modal').style.display = 'none';
-        }
-        function loginAdmin() {
-            const user = document.getElementById('admin-username').value;
-            const pass = document.getElementById('admin-password').value;
-            
-            if (user === 'root' && pass === 'BgmParty£ire') {
-                document.getElementById('user-view').style.display = 'none';
-                document.getElementById('admin-panel').style.display = 'block';
-                closeModal();
-                renderAdminDates();
-                renderBookings();
-            } else {
-                alert("Wrong password");
-            }
-        }
-        function logoutAdmin() {
-            document.getElementById('admin-panel').style.display = 'none';
-            document.getElementById('user-view').style.display = 'block';
-        }
-
-        window.onload = () => {
-            renderAvailableDates();
-            console.log('%cBGM Party Hire - Ready!', 'color:#ffd700;font-size:16px;font-weight:bold');
-        };
     </script>
 </body>
 </html>
