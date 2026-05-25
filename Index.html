@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGM Party Hire</title>
+    <meta name="description" content="Epic Birthday Parties - Bouncy Castles • Bubble House • Catering">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#8b00ff">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fredoka:wght@400;600&display=swap');
+        
+        :root {
+            --primary: #8b00ff;
+            --secondary: #ff00aa;
+            --accent: #00f0ff;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a0033 0%, #4b0082 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .balloons {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.15;
+        }
+        
+        header {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ff00aa, #00f0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+        }
+        
+        .hero h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3.2rem;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #fff, #00f0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            color: #ffd700;
+            margin-bottom: 2rem;
+        }
+        
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .service {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 24px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        
+        h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #ffd700;
+        }
+        
+        form {
+            display: grid;
+            gap: 1.4rem;
+        }
+        
+        label {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.9);
+            color: #1a0033;
+        }
+        
+        button {
+            padding: 18px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(139, 0, 255, 0.5);
+        }
+        
+        .available-dates {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+        
+        .date-card {
+            background: linear-gradient(135deg, #4b0082, #8b00ff);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            border: 3px solid rgba(255,215,0,0.6);
+        }
+        
+        .date-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: #ffd700;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #2a0055, #4b0082);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 420px;
+            padding: 2.5rem;
+            border: 2px solid #ffd700;
+        }
+        
+        .success-message {
+            background: #00ff88;
+            color: #003300;
+            padding: 1.2rem;
+            border-radius: 16px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="balloons">🎈🎉🎈🎂🎈🎉</div>
+    
+    <header>
+        <div class="nav">
+            <div class="logo">🎪 BGM Party Hire</div>
+            <button onclick="showAdminLogin()" style="background:none;border:none;font-size:2rem;cursor:pointer;">👑</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h1>Make Birthdays UNFORGETTABLE!</h1>
+            <p class="tagline">Bouncy Castles • Bubble House • Catering</p>
+            
+            <div class="services">
+                <div class="service">🏰 Bouncy Castle</div>
+                <div class="service">🫧 Bubble House</div>
+                <div class="service">🍔 Catering</div>
+            </div>
+        </div>
+
+        <!-- User View -->
+        <div id="user-view">
+            <div class="card">
+                <h2>Available Party Dates</h2>
+                <div id="available-dates" class="available-dates">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Book Your Party</h2>
+                <form id="booking-form">
+                    <div>
+                        <label>Child's Name / Party Name</label>
+                        <input type="text" id="name" required placeholder="e.g. Sophia's 7th Birthday">
+                    </div>
+                    <div>
+                        <label>Parent / Contact Name</label>
+                        <input type="text" id="contact" required placeholder="Your full name">
+                    </div>
+                    <div>
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone" required placeholder="07700 900123">
+                    </div>
+                    <div>
+                        <label>Select Date</label>
+                        <select id="date-select" required>
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">BOOK THIS DATE 🎉</button>
+                </form>
+                <div id="success-msg" class="success-message" style="display:none; margin-top:1rem;">
+                    🎉 Booking Request Received! We’ll call you soon to confirm.
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div id="admin-panel" class="admin-panel" style="display:none;">
+            <div class="card">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+                    <h2>👑 Admin Dashboard</h2>
+                    <button onclick="logoutAdmin()" style="background:#ff0066;color:white;padding:10px 20px;border-radius:12px;">Logout</button>
+                </div>
+                
+                <h3>Add New Available Date</h3>
+                <div style="display:flex;gap:12px;margin-bottom:2rem;">
+                    <input type="date" id="new-date" style="flex:1;padding:16px;border-radius:16px;">
+                    <button onclick="addAvailableDate()" class="btn-primary">Add Date</button>
+                </div>
+
+                <h3>Available Dates</h3>
+                <div id="admin-available-dates" class="available-dates" style="margin-bottom:2.5rem;"></div>
+
+                <h3>Bookings Received</h3>
+                <div id="bookings-list" style="max-height:500px;overflow-y:auto;"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Admin Login Modal -->
+    <div id="admin-modal" class="modal">
+        <div class="modal-content">
+            <h2 style="text-align:center;margin-bottom:1.5rem;">Admin Login</h2>
+            <input type="text" id="admin-username" value="root" style="width:100%;padding:14px;margin:10px 0;border-radius:12px;">
+            <input type="password" id="admin-password" placeholder="Password" style="width:100%;padding:14px;margin:10px 0;border-radius:12px;">
+            <button onclick="loginAdmin()" class="btn-primary" style="width:100%;margin-top:1rem;">Login to Dashboard</button>
+            <button onclick="closeModal()" style="width:100%;margin-top:0.8rem;background:rgba(255,255,255,0.2);color:white;">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        let availableDates = JSON.parse(localStorage.getItem('bgmDates')) || [
+            "2026-06-14", "2026-06-21", "2026-06-28", "2026-07-05", "2026-07-12", "2026-07-19"
+        ];
+        let bookings = JSON.parse(localStorage.getItem('bgmBookings')) || [];
+
+        function saveData() {
+            localStorage.setItem('bgmDates', JSON.stringify(availableDates));
+            localStorage.setItem('bgmBookings', JSON.stringify(bookings));
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-GB', { 
+                weekday: 'long', 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            });
+        }
+
+        function renderAvailableDates() {
+            const container = document.getElementById('available-dates');
+            const select = document.getElementById('date-select');
+            container.innerHTML = '';
+            select.innerHTML = '<option value="">Choose a date...</option>';
+
+            availableDates.forEach(date => {
+                const div = document.createElement('div');
+                div.className = 'date-card';
+                div.innerHTML = `<strong>${formatDate(date)}</strong><br><small>🎈 Available</small>`;
+                container.appendChild(div);
+
+                const opt = document.createElement('option');
+                opt.value = date;
+                opt.textContent = formatDate(date);
+                select.appendChild(opt);
+            });
+        }
+
+        function renderAdminDates() {
+            const container = document.getElementById('admin-available-dates');
+            container.innerHTML = '';
+            availableDates.forEach((date, i) => {
+                const div = document.createElement('div');
+                div.className = 'date-card';
+                div.innerHTML = `
+                    <strong>${formatDate(date)}</strong>
+                    <button onclick="removeDate(${i})" style="margin-top:10px;background:#ff0066;color:white;border:none;padding:8px 16px;border-radius:12px;">Remove</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function renderBookings() {
+            const container = document.getElementById('bookings-list');
+            container.innerHTML = bookings.length === 0 ? 
+                '<p style="text-align:center;padding:2rem;color:#ffd700;">No bookings yet.</p>' : '';
+
+            bookings.forEach((b, i) => {
+                const div = document.createElement('div');
+                div.style = 'background:rgba(255,255,255,0.1);padding:1.2rem;margin-bottom:1rem;border-radius:16px;';
+                div.innerHTML = `
+                    <strong>${b.name}</strong><br>
+                    <small>${b.contact} • ${b.phone}</small><br>
+                    <span style="color:#ffd700">${formatDate(b.date)}</span>
+                    <button onclick="deleteBooking(${i})" style="float:right;background:#ff0066;color:white;border:none;padding:6px 14px;border-radius:10px;">Delete</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function addAvailableDate() {
+            const date = document.getElementById('new-date').value;
+            if (!date) return alert("Pick a date first!");
+            if (availableDates.includes(date)) return alert("Date already added");
+            
+            availableDates.push(date);
+            availableDates.sort();
+            saveData();
+            renderAvailableDates();
+            renderAdminDates();
+        }
+
+        function removeDate(i) {
+            if (confirm("Remove this date?")) {
+                availableDates.splice(i, 1);
+                saveData();
+                renderAvailableDates();
+                renderAdminDates();
+            }
+        }
+
+        function deleteBooking(i) {
+            if (confirm("Delete booking?")) {
+                bookings.splice(i, 1);
+                saveData();
+                renderBookings();
+            }
+        }
+
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const contact = document.getElementById('contact').value;
+            const phone = document.getElementById('phone').value;
+            const date = document.getElementById('date-select').value;
+
+            bookings.push({ name, contact, phone, date, time: new Date().toLocaleString() });
+            saveData();
+            renderBookings();
+
+            document.getElementById('success-msg').style.display = 'block';
+            this.reset();
+            
+            setTimeout(() => document.getElementById('success-msg').style.display = 'none', 6000);
+        });
+
+        // Admin
+        function showAdminLogin() {
+            document.getElementById('admin-modal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('admin-modal').style.display = 'none';
+        }
+        function loginAdmin() {
+            const user = document.getElementById('admin-username').value;
+            const pass = document.getElementById('admin-password').value;
+            
+            if (user === 'root' && pass === 'BgmParty£ire') {
+                document.getElementById('user-view').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'block';
+                closeModal();
+                renderAdminDates();
+                renderBookings();
+            } else {
+                alert("Wrong password");
+            }
+        }
+        function logoutAdmin() {
+            document.getElementById('admin-panel').style.display = 'none';
+            document.getElementById('user-view').style.display = 'block';
+        }
+
+        window.onload = () => {
+            renderAvailableDates();
+            console.log('%cBGM Party Hire - Ready!', 'color:#ffd700;font-size:16px;font-weight:bold');
+        };
+    </script>
+</body>
+</html>
