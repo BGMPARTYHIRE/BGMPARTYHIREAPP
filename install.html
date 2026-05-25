@@ -5,323 +5,414 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BGM Party Hire — Install App</title>
 
-    <!-- PWA Meta -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="BGM Party Hire">
     <meta name="theme-color" content="#e6392e">
-
-    <!-- PWA Manifest (inline via data URI so it works as a single file) -->
+    <!-- Manifest: start_url points to index.html in the SAME folder -->
     <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22BGM%20Party%20Hire%22%2C%22short_name%22%3A%22BGM%22%2C%22start_url%22%3A%22index.html%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23b71c1c%22%2C%22theme_color%22%3A%22%23e6392e%22%7D">
+    <link rel="apple-touch-icon" href="Snapchat-1423612140.jpg">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Impact&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Impact&family=Poppins:wght@400;600;700&display=swap');
-
-        :root {
-            --red: #e6392e;
-            --dark-red: #b71c1c;
-            --yellow: #ffd700;
-        }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(160deg, #1a0000 0%, #3d0000 40%, #b71c1c 100%);
-            color: white;
+            background: linear-gradient(135deg, #e6392e 0%, #b71c1c 100%);
             min-height: 100vh;
+            color: white;
             overflow-x: hidden;
         }
 
-        .logo-font { font-family: 'Impact', sans-serif; letter-spacing: -3px; }
+        .logo-font {
+            font-family: 'Impact', sans-serif;
+            letter-spacing: -3px;
+        }
 
-        /* Animated background dots */
-        body::before {
-            content: '';
+        .blob {
             position: fixed;
-            inset: 0;
-            background-image: radial-gradient(circle, rgba(255,215,0,0.07) 1px, transparent 1px);
-            background-size: 36px 36px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.22;
             pointer-events: none;
             z-index: 0;
         }
-
-        .content { position: relative; z-index: 1; }
-
-        /* Bouncing logo */
-        .bounce {
-            animation: bounce 2.8s infinite ease-in-out;
+        .blob-1 {
+            width: 500px; height: 500px;
+            background: #ffd700;
+            top: -150px; right: -150px;
+            animation: blobMove1 10s ease-in-out infinite alternate;
         }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-18px); }
+        .blob-2 {
+            width: 400px; height: 400px;
+            background: #ff6b35;
+            bottom: -100px; left: -100px;
+            animation: blobMove2 12s ease-in-out infinite alternate;
         }
-
-        /* Phone mockup */
-        .phone-frame {
-            background: #111;
-            border-radius: 38px;
-            border: 3px solid #ffd700;
-            box-shadow: 0 0 0 6px rgba(255,215,0,0.1), 0 30px 60px rgba(0,0,0,0.6);
-            position: relative;
-            overflow: hidden;
+        @keyframes blobMove1 {
+            from { transform: translate(0,0) scale(1); }
+            to   { transform: translate(-60px,80px) scale(1.2); }
         }
-        .phone-notch {
-            width: 100px;
-            height: 24px;
-            background: #111;
-            border-radius: 0 0 18px 18px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 10;
+        @keyframes blobMove2 {
+            from { transform: translate(0,0) scale(1); }
+            to   { transform: translate(60px,-60px) scale(1.1); }
         }
 
-        /* Step cards */
-        .step-card {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,215,0,0.2);
-            backdrop-filter: blur(12px);
+        .floater {
+            position: fixed;
+            font-size: 3rem;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatUp linear infinite;
+            opacity: 0;
+        }
+        @keyframes floatUp {
+            0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10%  { opacity: 0.45; }
+            90%  { opacity: 0.25; }
+            100% { transform: translateY(-150px) rotate(360deg); opacity: 0; }
+        }
+
+        .glass-card {
+            background: rgba(0,0,0,0.32);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,215,0,0.25);
+            border-radius: 28px;
+        }
+
+        .qr-frame {
+            background: white;
             border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-        .step-card:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,215,0,0.5);
-            transform: translateY(-4px);
+            padding: 16px;
+            display: inline-block;
+            box-shadow: 0 0 0 4px #ffd700, 0 20px 50px rgba(0,0,0,0.4);
         }
 
-        .step-number {
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 18px;
+            border: 1px solid rgba(255,215,0,0.12);
+            transition: all 0.3s ease;
+            animation: stepIn 0.6s both;
+        }
+        .step:hover {
+            background: rgba(255,215,0,0.12);
+            border-color: rgba(255,215,0,0.45);
+            transform: translateX(4px);
+        }
+        @keyframes stepIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        .step-num {
             background: #ffd700;
             color: #b71c1c;
             font-family: 'Impact', sans-serif;
-            font-size: 1.5rem;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        /* Safari share icon highlight */
-        .share-icon-pill {
-            background: rgba(255,215,0,0.15);
-            border: 1px solid rgba(255,215,0,0.4);
+            font-size: 1.4rem;
+            width: 42px; height: 42px;
             border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            font-size: 0.9rem;
-            font-weight: 600;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        /* QR container */
-        .qr-wrapper {
-            background: white;
-            border-radius: 24px;
-            padding: 16px;
+        .safari-icon {
+            background: linear-gradient(135deg, #1a73e8, #34a0f7);
+            border-radius: 14px;
+            width: 52px; height: 52px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .share-bounce {
+            animation: sharePop 1.8s ease-in-out infinite;
             display: inline-block;
-            box-shadow: 0 0 40px rgba(255,215,0,0.3);
+        }
+        @keyframes sharePop {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50%       { transform: translateY(-6px) scale(1.15); }
         }
 
-        /* Bottom arrow pulse */
-        .arrow-pulse {
-            animation: arrowBounce 1.4s infinite ease-in-out;
+        .logo-pulse {
+            position: relative;
+            display: inline-block;
+        }
+        .logo-pulse::before {
+            content: '';
+            position: absolute;
+            inset: -12px;
+            border: 3px solid rgba(255,215,0,0.4);
+            border-radius: 50%;
+            animation: ring 2s ease-in-out infinite;
+        }
+        @keyframes ring {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50%       { transform: scale(1.12); opacity: 0; }
+        }
+
+        .arrow-bounce {
+            animation: arrowBounce 1.4s ease-in-out infinite;
         }
         @keyframes arrowBounce {
-            0%, 100% { transform: translateY(0); opacity: 1; }
-            50% { transform: translateY(8px); opacity: 0.5; }
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(8px); }
         }
 
-        /* Glow badge */
-        .glow-badge {
-            background: linear-gradient(135deg, #ffd700, #ff9900);
-            color: #7a1a00;
+        .pop-in { animation: popIn 0.7s cubic-bezier(0.34,1.56,0.64,1) both; }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.75) translateY(20px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .mobile-only { display: none; }
+        @media (max-width: 768px) {
+            .mobile-only  { display: block; }
+            .desktop-only { display: none; }
+        }
+        @media (min-width: 769px) {
+            .desktop-only { display: block; }
+        }
+
+        .btn-yellow {
+            background: #ffd700;
+            color: #b71c1c;
             font-weight: 700;
-            border-radius: 999px;
-            padding: 6px 20px;
-            font-size: 0.75rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            box-shadow: 0 4px 20px rgba(255,215,0,0.4);
+            transition: all 0.35s ease;
         }
-
-        /* iOS only notice */
-        .ios-notice {
-            background: rgba(255,215,0,0.08);
-            border: 1px dashed rgba(255,215,0,0.3);
-            border-radius: 14px;
-        }
-
-        .party-float {
-            animation: float 4s infinite ease-in-out;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(6deg); }
-        }
-
-        /* Shimmer on CTA */
-        @keyframes shimmer {
-            0% { background-position: -200% center; }
-            100% { background-position: 200% center; }
+        .btn-yellow:hover {
+            background: white;
+            transform: scale(1.07) rotate(1deg);
         }
     </style>
 </head>
 <body>
 
-    <!-- Script: if already running as standalone PWA, go to main page -->
-    <script>
-        if (window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches) {
-            window.location.replace('index.html');
-        }
-    </script>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
 
-    <!-- Floating emojis -->
-    <div class="fixed top-20 right-6 text-5xl party-float hidden lg:block" style="z-index:2">🎈</div>
-    <div class="fixed bottom-32 left-8 text-4xl party-float hidden lg:block" style="animation-delay:1.5s; z-index:2">🎉</div>
+    <div class="floater" style="left:7%;animation-duration:9s;animation-delay:0s">🎈</div>
+    <div class="floater" style="left:21%;animation-duration:12s;animation-delay:2s">🎉</div>
+    <div class="floater" style="left:54%;animation-duration:10s;animation-delay:4s">🏰</div>
+    <div class="floater" style="left:74%;animation-duration:13s;animation-delay:1s">⭐</div>
+    <div class="floater" style="left:87%;animation-duration:8s;animation-delay:3s">🎊</div>
 
-    <div class="content max-w-2xl mx-auto px-5 py-10 flex flex-col items-center text-center gap-10">
+    <!-- Navbar -->
+    <nav class="relative z-10 bg-black/70 backdrop-blur-xl border-b border-yellow-400/50 sticky top-0">
+        <div class="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between">
+            <div class="logo-font text-2xl tracking-tight">
+                <span class="text-yellow-400">BGM</span> PARTY HIRE
+            </div>
+            <a href="index.html"
+               class="bg-yellow-400 text-red-700 px-5 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 hover:scale-105 transition shadow-lg">
+                <i class="fa-solid fa-house"></i>
+                MAIN SITE
+            </a>
+        </div>
+    </nav>
 
-        <!-- Header -->
-        <div class="flex flex-col items-center gap-3">
-            <span class="glow-badge">📱 Free App — No App Store Needed</span>
-            <h1 class="text-5xl md:text-6xl font-bold logo-font leading-tight mt-2">
-                GET THE<br><span style="color:#ffd700">BGM APP</span>
+    <main class="relative z-10 max-w-2xl mx-auto px-5 py-12 flex flex-col items-center gap-10">
+
+        <!-- Hero -->
+        <div class="text-center pop-in" style="animation-delay:0.1s">
+            <div class="logo-pulse mb-6 inline-block">
+                <div class="w-24 h-24 rounded-full bg-yellow-400/20 border-2 border-yellow-400/60 flex items-center justify-center mx-auto text-5xl">
+                    🎉
+                </div>
+            </div>
+            <h1 class="logo-font text-5xl md:text-6xl leading-none mb-3">
+                GET THE APP<br><span class="text-yellow-400">IT'S FREE!</span>
             </h1>
-            <p class="text-yellow-100 text-lg max-w-sm mt-1">
-                Book your bouncy castle in seconds — straight from your home screen
+            <p class="text-yellow-100 text-lg max-w-sm mx-auto">
+                Add BGM Party Hire to your home screen — instant booking, no App Store needed!
             </p>
         </div>
 
-        <!-- Phone mockup with screen -->
-        <div class="phone-frame w-52 md:w-64" style="height: 420px;">
-            <div class="phone-notch mt-3"></div>
-            <div class="flex flex-col items-center justify-center h-full pb-10 gap-3 px-4">
-                <div class="text-6xl bounce">🏰</div>
-                <div class="logo-font text-2xl" style="color:#ffd700; letter-spacing:-1px;">BGM PARTY HIRE</div>
-                <div class="text-xs text-red-200 opacity-80">Tap to book your party</div>
-                <div class="mt-2 px-6 py-3 rounded-2xl font-bold text-sm text-red-800" style="background:#ffd700;">
-                    BOOK NOW 🎉
-                </div>
-            </div>
-        </div>
+        <!-- MOBILE: Safari steps -->
+        <div class="mobile-only w-full pop-in" style="animation-delay:0.2s">
+            <div class="glass-card p-7">
 
-        <!-- Steps -->
-        <div class="w-full flex flex-col gap-4">
-            <h2 class="text-2xl font-bold logo-font" style="letter-spacing:-1px;">
-                3 STEPS TO INSTALL
-            </h2>
+                <div id="not-safari-banner"></div>
 
-            <!-- Step 1 -->
-            <div class="step-card p-5 flex items-start gap-4 text-left">
-                <div class="step-number">1</div>
-                <div class="flex-1">
-                    <div class="font-bold text-base mb-1">Open this page in Safari</div>
-                    <div class="text-yellow-100 text-sm opacity-90">
-                        Must be <strong>Safari</strong> on iPhone or iPad — Chrome won't work for this step
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="safari-icon">
+                        <i class="fa-brands fa-safari text-white text-2xl"></i>
                     </div>
-                    <div class="ios-notice mt-3 px-4 py-2 text-xs text-yellow-200 flex items-center gap-2">
-                        <i class="fa-brands fa-safari text-yellow-400 text-base"></i>
-                        Tap the <strong>Safari</strong> icon on your home screen to open it
+                    <div>
+                        <div class="font-bold text-lg">Safari Install Guide</div>
+                        <div class="text-yellow-300 text-sm">Takes less than 10 seconds!</div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Step 2 -->
-            <div class="step-card p-5 flex items-start gap-4 text-left">
-                <div class="step-number">2</div>
-                <div class="flex-1">
-                    <div class="font-bold text-base mb-1">Tap the Share button</div>
-                    <div class="text-yellow-100 text-sm opacity-90 mb-3">
-                        At the bottom of Safari, tap the share icon — it looks like this:
+                <div class="flex flex-col gap-3">
+
+                    <div class="step" style="animation-delay:0.3s">
+                        <div class="step-num">1</div>
+                        <div>
+                            <div class="font-bold mb-1">Open in Safari</div>
+                            <div class="text-sm text-yellow-100 opacity-90">Make sure you're viewing this page in <span class="text-yellow-400 font-semibold">Safari</span> on your iPhone or iPad — not Chrome or another browser.</div>
+                        </div>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="share-icon-pill">
-                            <i class="fa-solid fa-arrow-up-from-bracket text-yellow-400"></i>
-                            Share button
+
+                    <div class="step" style="animation-delay:0.4s">
+                        <div class="step-num">2</div>
+                        <div>
+                            <div class="font-bold mb-1 flex items-center gap-2">
+                                Tap the Share button
+                                <span class="share-bounce text-yellow-400 text-xl">
+                                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                                </span>
+                            </div>
+                            <div class="text-sm text-yellow-100 opacity-90">At the <span class="text-yellow-400 font-semibold">bottom centre</span> of Safari — a box with an arrow pointing up. Tap it!</div>
+                        </div>
+                    </div>
+
+                    <div class="step" style="animation-delay:0.5s">
+                        <div class="step-num">3</div>
+                        <div>
+                            <div class="font-bold mb-1">Tap "Add to Home Screen"</div>
+                            <div class="text-sm text-yellow-100 opacity-90">Scroll the share sheet and tap <span class="text-yellow-400 font-semibold">"Add to Home Screen"</span> 🏠 — usually in the second row of icons.</div>
+                        </div>
+                    </div>
+
+                    <div class="step" style="animation-delay:0.6s">
+                        <div class="step-num">4</div>
+                        <div>
+                            <div class="font-bold mb-1">Tap "Add" to confirm</div>
+                            <div class="text-sm text-yellow-100 opacity-90">A preview appears — hit <span class="text-yellow-400 font-semibold">"Add"</span> in the top right. Done! The app icon appears on your home screen 🎊</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Visual hint -->
+                <div class="mt-6 text-center">
+                    <div class="text-yellow-300 text-sm font-semibold mb-2">Look for this button at the bottom of Safari:</div>
+                    <div class="inline-flex items-center gap-3 bg-yellow-400/15 border border-yellow-400/35 rounded-2xl px-6 py-3">
+                        <span class="arrow-bounce text-2xl text-yellow-400">
+                            <i class="fa-solid fa-arrow-up-from-bracket"></i>
                         </span>
-                        <span class="text-xs text-yellow-200 self-center">(bottom centre of screen)</span>
+                        <span class="text-yellow-100 font-semibold text-sm">Share → Add to Home Screen</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- DESKTOP: QR code -->
+        <div class="desktop-only w-full pop-in" style="animation-delay:0.2s">
+            <div class="glass-card p-8 text-center">
+                <h2 class="logo-font text-3xl mb-2 text-yellow-400">SCAN WITH YOUR PHONE</h2>
+                <p class="text-yellow-100 mb-8 text-sm">Point your iPhone camera at the QR code, then follow the Safari steps to install</p>
+
+                <div class="qr-frame mx-auto mb-6">
+                    <!-- ⬇ Replace YOUR-SITE-URL.com/install.html with your real URL -->
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://YOUR-SITE-URL.com/install.html&color=b71c1c&bgcolor=ffffff&qzone=1&format=svg"
+                         alt="QR Code — BGM Party Hire App Install"
+                         width="220" height="220"
+                         onerror="this.outerHTML='<div style=\'width:220px;height:220px;display:flex;align-items:center;justify-content:center;background:#f5f5f5;border-radius:8px;color:#b71c1c;font-size:0.8rem;text-align:center;padding:16px\'>⚠️ Update<br>YOUR-SITE-URL<br>in the QR src</div>'">
+                </div>
+
+                <div class="text-yellow-300 text-sm font-semibold">🔗 Or open this page directly on your phone in Safari</div>
+            </div>
+        </div>
+
+        <!-- Why install -->
+        <div class="glass-card p-7 w-full pop-in" style="animation-delay:0.75s">
+            <h3 class="logo-font text-2xl text-yellow-400 mb-4 text-center">WHY INSTALL?</h3>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="flex items-center gap-3 bg-white/5 rounded-2xl px-4 py-3">
+                    <span class="text-2xl">⚡</span>
+                    <div>
+                        <div class="font-bold text-sm">Instant Access</div>
+                        <div class="text-xs text-yellow-100 opacity-75">One tap to book</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 bg-white/5 rounded-2xl px-4 py-3">
+                    <span class="text-2xl">📴</span>
+                    <div>
+                        <div class="font-bold text-sm">Works Offline</div>
+                        <div class="text-xs text-yellow-100 opacity-75">Browse without signal</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 bg-white/5 rounded-2xl px-4 py-3">
+                    <span class="text-2xl">🚫</span>
+                    <div>
+                        <div class="font-bold text-sm">No App Store</div>
+                        <div class="text-xs text-yellow-100 opacity-75">100% free, always</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 bg-white/5 rounded-2xl px-4 py-3">
+                    <span class="text-2xl">🎉</span>
+                    <div>
+                        <div class="font-bold text-sm">Book Faster</div>
+                        <div class="text-xs text-yellow-100 opacity-75">Secure your date quick</div>
                     </div>
                 </div>
             </div>
-
-            <!-- Step 3 -->
-            <div class="step-card p-5 flex items-start gap-4 text-left">
-                <div class="step-number">3</div>
-                <div class="flex-1">
-                    <div class="font-bold text-base mb-1">Tap "Add to Home Screen"</div>
-                    <div class="text-yellow-100 text-sm opacity-90 mb-3">
-                        Scroll down the share sheet and tap:
-                    </div>
-                    <div class="share-icon-pill">
-                        <i class="fa-solid fa-plus text-yellow-400"></i>
-                        Add to Home Screen
-                    </div>
-                    <div class="text-xs text-yellow-200 mt-3">
-                        Then tap <strong>"Add"</strong> in the top right — done! 🎉
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <!-- Arrow pointing down towards QR -->
-        <div class="flex flex-col items-center gap-1 opacity-60">
-            <div class="text-sm text-yellow-200 font-semibold">On desktop? Scan to open on your phone</div>
-            <i class="fa-solid fa-chevron-down text-yellow-400 text-xl arrow-pulse"></i>
+        <!-- CTA -->
+        <div class="text-center pop-in" style="animation-delay:0.95s">
+            <a href="index.html"
+               class="btn-yellow inline-flex items-center gap-3 px-10 py-5 rounded-3xl text-xl font-bold shadow-2xl">
+                <i class="fa-solid fa-rocket"></i>
+                BROWSE THE SITE FIRST
+            </a>
+            <p class="mt-4 text-yellow-200 text-sm opacity-75">Then install the app from Safari!</p>
         </div>
 
-        <!-- QR Code (points to index.html — swap URL to your live domain) -->
-        <div class="flex flex-col items-center gap-4">
-            <div class="qr-wrapper">
-                <!-- QR code generated via Google Charts API pointing to your main page -->
-                <img src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=https%3A%2F%2Fyourdomain.com%2Findex.html&choe=UTF-8&chld=M|2"
-                     alt="QR code to BGM Party Hire"
-                     width="200" height="200"
-                     onerror="this.parentElement.innerHTML='<div style=\'width:200px;height:200px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;border-radius:12px;color:#999;font-size:12px;text-align:center;padding:20px;\'>QR code will appear here once your site is live</div>'">
-            </div>
-            <p class="text-xs text-yellow-200 opacity-70 max-w-xs">
-                Scan with your phone camera to open — then follow the 3 steps above to save to your home screen
-            </p>
-        </div>
+    </main>
 
-        <!-- Trust bar -->
-        <div class="w-full grid grid-cols-3 gap-3 py-2">
-            <div class="flex flex-col items-center gap-1">
-                <i class="fa-solid fa-star text-yellow-400 text-2xl"></i>
-                <div class="font-bold text-sm">Free</div>
-                <div class="text-xs opacity-60">No cost ever</div>
-            </div>
-            <div class="flex flex-col items-center gap-1">
-                <i class="fa-solid fa-bolt text-yellow-400 text-2xl"></i>
-                <div class="font-bold text-sm">Fast</div>
-                <div class="text-xs opacity-60">Instant access</div>
-            </div>
-            <div class="flex flex-col items-center gap-1">
-                <i class="fa-solid fa-lock text-yellow-400 text-2xl"></i>
-                <div class="font-bold text-sm">Safe</div>
-                <div class="text-xs opacity-60">No app store needed</div>
-            </div>
-        </div>
-
-        <!-- Footer link back to main site -->
-        <a href="index.html"
-           class="text-yellow-300 underline underline-offset-4 text-sm opacity-70 hover:opacity-100 transition">
-            ← Go straight to the website instead
-        </a>
-
-    </div>
+    <!-- Footer -->
+    <footer class="relative z-10 text-center py-8 border-t border-yellow-400/20 mt-4">
+        <p class="text-xs text-yellow-200 opacity-50">© 2026 BGM Party Hire • Inflatable fun across the UK</p>
+    </footer>
 
     <script>
-        // If user navigated here from within the installed PWA, redirect immediately
-        window.addEventListener('DOMContentLoaded', function () {
-            if (window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches) {
+        // ─── PWA REDIRECT ────────────────────────────────────────────────────────
+        // If already installed and launched from home screen, skip this install
+        // page and go straight to the main site.
+        (function () {
+            var standalone =
+                window.navigator.standalone === true ||
+                window.matchMedia('(display-mode: standalone)').matches ||
+                window.matchMedia('(display-mode: fullscreen)').matches;
+            if (standalone) {
                 window.location.replace('index.html');
+            }
+        })();
+
+        // ─── NOT-SAFARI BANNER ───────────────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', function () {
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+            if (isMobile && !isSafari) {
+                var banner = document.getElementById('not-safari-banner');
+                banner.innerHTML =
+                    '<div style="' +
+                        'background:rgba(255,215,0,0.14);' +
+                        'border:1px solid rgba(255,215,0,0.5);' +
+                        'border-radius:16px;padding:14px 18px;margin-bottom:16px;' +
+                        'font-size:0.85rem;display:flex;align-items:center;gap:12px' +
+                    '">' +
+                        '<span style="font-size:1.5rem">⚠️</span>' +
+                        '<div>' +
+                            '<div style="font-weight:700;color:#ffd700;margin-bottom:3px">Open in Safari first!</div>' +
+                            '<div style="color:rgba(255,255,255,0.85)">Copy this URL and paste it into <strong>Safari</strong> to install the app.</div>' +
+                        '</div>' +
+                    '</div>';
             }
         });
     </script>
